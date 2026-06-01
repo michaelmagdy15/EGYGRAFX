@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EGYGRAFX. | B2B Solutions Matchmaker Gateway</title>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#0A0A0A',
+            brandPanel: '#121212',
+            brandBorder: '#262626',
+            brandGold: '#D3A572',
+            brandGoldHover: '#C29461',
+            brandTextPrimary: '#F5FAFA',
+            brandTextSecondary: '#A8A8A8',
+            brandTextMetadata: '#6B6B6B',
+            brandCrimson: '#bf243c',
+            brandCrimsonHover: '#a31b2f',
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+            courier: ['Courier Prime', 'Courier', 'monospace'],
+            serifTitle: ['Playfair Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #0A0A0A;
+      color: #A8A8A8;
+      font-family: 'Inter', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262626;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D3A572;
+    }
+    .bento-card-glow {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .bento-card-glow:hover {
+      border-color: #D3A572;
+      box-shadow: 0 10px 30px rgba(211, 165, 114, 0.08);
+      transform: translateY(-4px);
+    }
+    .bento-card-active {
+      border-color: #D3A572 !important;
+      box-shadow: 0 10px 30px rgba(211, 165, 114, 0.12) !important;
+      background-color: rgba(211, 165, 114, 0.04) !important;
+    }
+    .bento-card-active .text-brandTextSecondary,
+    .bento-card-active .group-hover\:text-brandGold,
+    .bento-card-active h3 {
+      color: #D3A572 !important;
+    }
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-container {
+        width: 100% !important;
+        background-color: #ffffff !important;
+        color: #000000 !important;
+        box-shadow: none !important;
+        border: none !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
+        overflow: visible !important;
+      }
+      #quotation-proposal-modal {
+        position: absolute !important;
+        background-color: #ffffff !important;
+        display: block !important;
+        overflow: visible !important;
+      }
+      #quotation-document-sheet {
+        background: #ffffff !important;
+        color: #000000 !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+      .divide-brandBorder\/40 > * {
+        border-color: #e5e7eb !important;
+      }
+      .text-brandTextPrimary {
+        color: #000000 !important;
+      }
+      .text-brandTextSecondary {
+        color: #374151 !important;
+      }
+      .text-brandTextMetadata {
+        color: #4b5563 !important;
+      }
+      .text-brandGold {
+        color: #854d0e !important;
+      }
+      .bg-brandPanel\/40, .bg-brandPanel\/20, .bg-brandPanel {
+        background: #f3f4f6 !important;
+      }
+      .border-brandBorder {
+        border-color: #d1d5db !important;
+      }
+      table th {
+        color: #000000 !important;
+      }
+      table td {
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-brandGold selection:text-brandBg antialiased">
+
+  <!-- ================= TOP HEADER BRANDING ================= -->
+  <header class="no-print border-b border-brandBorder bg-brandPanel px-6 py-4 md:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-3">
+      <a href="home_portal_prototype.html" class="text-3xl font-extrabold tracking-[0.25em] text-brandTextPrimary uppercase select-none font-outfit decoration-none">
+        EGYGRAFX<span class="text-brandGold">.</span>
+      </a>
+      <div class="h-6 w-[1px] bg-brandBorder hidden sm:block"></div>
+      <div class="text-xs uppercase tracking-widest text-brandTextMetadata font-courier hidden sm:block">
+        B2B Applications Matchmaker
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-8 items-center text-sm font-semibold tracking-wider uppercase font-outfit">
+      <a href="home_portal_prototype.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200 decoration-none">Home Portal</a>
+      <a href="applications_gateway.html" class="text-brandGold border-b-2 border-brandGold pb-1 font-bold decoration-none">Applications Gateway</a>
+      <a href="margin_calculator.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200 decoration-none">ROI Calculator</a>
+      <a href="admin.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200 decoration-none">Admin CMS</a>
+    </nav>
+    <div class="text-xs md:text-sm font-serifTitle italic text-brandGold tracking-wider">
+      YOUR APPLICATIONS &mdash; OUR SOLUTIONS
+    </div>
+  </header>
+
+  <!-- ================= MAIN PORTAL STAGE ================= -->
+  <main class="no-print flex-grow container mx-auto px-4 md:px-8 py-8 space-y-8">
+
+    <!-- Hero Header -->
+    <div class="bg-brandPanel border border-brandBorder rounded-3xl p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 min-h-[200px]">
+      <div class="absolute right-[-40px] top-[-40px] w-48 h-48 rounded-full bg-brandGold/5 border border-brandGold/10 pointer-events-none"></div>
+      <div class="flex-1 flex flex-col gap-3 relative z-10">
+        <span class="font-courier text-[10px] uppercase text-brandGold tracking-widest font-bold">Matched Fleet Gateway</span>
+        <h1 class="font-serifTitle italic text-3xl md:text-4xl text-brandTextPrimary font-bold">Solutions Matching Engine</h1>
+        <p class="text-xs text-brandTextSecondary max-w-2xl leading-relaxed font-inter">
+          Select an industrial sector from our asymmetric Bento catalog below. EGYGRAFX dynamically matches your commercial outputs to custom water-cooled machinery, high-density chemistry solutions, and certified substrates rolls instantly.
+        </p>
+      </div>
+    </div>
+
+    <!-- 9-Sector Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
+      
+      <!-- Sector 01: Home Textile -->
+      <div onclick="selectSector('home-textile')" id="sector-card-home-textile" class="md:col-span-8 md:row-span-2 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow relative overflow-hidden group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandGold p-2.5 rounded-xl bg-brandBg border border-brandBorder"><i class="fa-solid fa-layer-group text-xl"></i></span>
+          <span class="text-xs font-courier text-brandGold border border-brandGold/30 px-2 py-0.5 rounded font-bold">Sector 01</span>
+        </div>
+        <div class="mt-8 flex flex-col gap-2">
+          <span class="font-courier text-[10px] text-brandGold font-bold uppercase tracking-wider">Fast Fashion & Fabrics Journey</span>
+          <h3 class="font-serifTitle italic text-2xl font-bold text-brandTextPrimary">Home Textile & Fast Fashion</h3>
+          <p class="text-xs text-brandTextSecondary leading-relaxed">
+            Transitioning industrial mills to high-productivity waterless dye-sublimation and direct-to-fabric setups utilizing active Kyocera printheads.
+          </p>
+        </div>
+        <div class="mt-6 flex justify-between items-center border-t border-brandBorder/40 pt-4 text-xs font-courier">
+          <span>Kyocera Array &bull; Up to 760 sqm/h</span>
+          <span class="text-brandGold font-mono uppercase tracking-wider font-bold">Configure Suite <i class="fa-solid fa-arrow-right ml-1"></i></span>
+        </div>
+      </div>
+
+      <!-- Sector 02: T-Shirts -->
+      <div onclick="selectSector('t-shirts')" id="sector-card-t-shirts" class="md:col-span-4 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandTextSecondary p-2.5 rounded-xl bg-brandBg border border-brandBorder group-hover:text-brandGold transition-colors"><i class="fa-solid fa-shirt"></i></span>
+          <span class="text-xs font-courier text-brandTextMetadata">Sector 02</span>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-outfit text-base font-bold text-brandTextPrimary">T-Shirts & Pieces</h3>
+          <p class="text-[11px] text-brandTextSecondary mt-1 leading-normal">Elastic white and CMYK DTF transfers and Direct DTG hybrid print stations.</p>
+        </div>
+        <span class="text-[10px] text-brandTextMetadata border-t border-brandBorder/40 pt-3 mt-4 font-courier">Epson i3200 Array</span>
+      </div>
+
+      <!-- Sector 03: Carpets -->
+      <div onclick="selectSector('carpet-rugs')" id="sector-card-carpet-rugs" class="md:col-span-4 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandTextSecondary p-2.5 rounded-xl bg-brandBg border border-brandBorder group-hover:text-brandGold transition-colors"><i class="fa-solid fa-border-all"></i></span>
+          <span class="text-xs font-courier text-brandTextMetadata">Sector 03</span>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-outfit text-base font-bold text-brandTextPrimary">Carpet, Mats & Rugs</h3>
+          <p class="text-[11px] text-brandTextSecondary mt-1 leading-normal">Super-wide disperse print systems paired with high-pile piece presses.</p>
+        </div>
+        <span class="text-[10px] text-brandTextMetadata border-t border-brandBorder/40 pt-3 mt-4 font-courier">Starfire & Epson Arrays</span>
+      </div>
+
+      <!-- Sector 04: CAD/CAM -->
+      <div onclick="selectSector('cad-cam')" id="sector-card-cad-cam" class="md:col-span-4 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandTextSecondary p-2.5 rounded-xl bg-brandBg border border-brandBorder group-hover:text-brandGold transition-colors"><i class="fa-solid fa-bezier-curve"></i></span>
+          <span class="text-xs font-courier text-brandTextMetadata">Sector 04</span>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-outfit text-base font-bold text-brandTextPrimary">Hi-Tech Industrial CAD/CAM</h3>
+          <p class="text-[11px] text-brandTextSecondary mt-1 leading-normal">Automotive interiors, shoes synthetics, and technical drafting plotters.</p>
+        </div>
+        <span class="text-[10px] text-brandTextMetadata border-t border-brandBorder/40 pt-3 mt-4 font-courier">Laser Systems & PageWide</span>
+      </div>
+
+      <!-- Sector 05: Signage -->
+      <div onclick="selectSector('signage')" id="sector-card-signage" class="md:col-span-4 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandTextSecondary p-2.5 rounded-xl bg-brandBg border border-brandBorder group-hover:text-brandGold transition-colors"><i class="fa-solid fa-image"></i></span>
+          <span class="text-xs font-courier text-brandTextMetadata">Sector 05</span>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-outfit text-base font-bold text-brandTextPrimary">Signage & Display</h3>
+          <p class="text-[11px] text-brandTextSecondary mt-1 leading-normal">Hybrid UV displays, water-based Latex wraps, and vinyl cast marking.</p>
+        </div>
+        <span class="text-[10px] text-brandTextMetadata border-t border-brandBorder/40 pt-3 mt-4 font-courier">Thermal Latex & LED-UV</span>
+      </div>
+
+      <!-- Sector 06: Wallpaper -->
+      <div onclick="selectSector('wallpaper')" id="sector-card-wallpaper" class="md:col-span-4 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandTextSecondary p-2.5 rounded-xl bg-brandBg border border-brandBorder group-hover:text-brandGold transition-colors"><i class="fa-solid fa-house-chimney"></i></span>
+          <span class="text-xs font-courier text-brandTextMetadata">Sector 06</span>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-outfit text-base font-bold text-brandTextPrimary">Wall Covering & Décor</h3>
+          <p class="text-[11px] text-brandTextSecondary mt-1 leading-normal">Textured embossed wallpapers, tactile varnishing, and canvas fine arts.</p>
+        </div>
+        <span class="text-[10px] text-brandTextMetadata border-t border-brandBorder/40 pt-3 mt-4 font-courier">High-Opacity White & UV</span>
+      </div>
+
+      <!-- Sector 07: Outdoor -->
+      <div onclick="selectSector('outdoor')" id="sector-card-outdoor" class="md:col-span-4 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandTextSecondary p-2.5 rounded-xl bg-brandBg border border-brandBorder group-hover:text-brandGold transition-colors"><i class="fa-solid fa-road"></i></span>
+          <span class="text-xs font-courier text-brandTextMetadata">Sector 07</span>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-outfit text-base font-bold text-brandTextPrimary">Outdoor Advertising & street</h3>
+          <p class="text-[11px] text-brandTextSecondary mt-1 leading-normal">Seamless wide solvent billboard mesh and smart LED digital street furniture.</p>
+        </div>
+        <span class="text-[10px] text-brandTextMetadata border-t border-brandBorder/40 pt-3 mt-4 font-courier">Double side UV & Solvent</span>
+      </div>
+
+      <!-- Sector 08: Packaging -->
+      <div onclick="selectSector('packaging')" id="sector-card-packaging" class="md:col-span-4 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandTextSecondary p-2.5 rounded-xl bg-brandBg border border-brandBorder group-hover:text-brandGold transition-colors"><i class="fa-solid fa-box"></i></span>
+          <span class="text-xs font-courier text-brandTextMetadata">Sector 08</span>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-outfit text-base font-bold text-brandTextPrimary">Packaging & Labeling</h3>
+          <p class="text-[11px] text-brandTextSecondary mt-1 leading-normal">Single-pass corrugated boxes, food-safe packaging, and label print-cuts.</p>
+        </div>
+        <span class="text-[10px] text-brandTextMetadata border-t border-brandBorder/40 pt-3 mt-4 font-courier">High-Speed Single-Pass</span>
+      </div>
+
+      <!-- Sector 09: Personalization -->
+      <div onclick="selectSector('personalization')" id="sector-card-personalization" class="md:col-span-4 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between cursor-pointer bento-card-glow group">
+        <div class="flex justify-between items-start">
+          <span class="text-brandTextSecondary p-2.5 rounded-xl bg-brandBg border border-brandBorder group-hover:text-brandGold transition-colors"><i class="fa-solid fa-gift"></i></span>
+          <span class="text-xs font-courier text-brandTextMetadata">Sector 09</span>
+        </div>
+        <div class="mt-4">
+          <h3 class="font-outfit text-base font-bold text-brandTextPrimary">Promotional & Personalization</h3>
+          <p class="text-[11px] text-brandTextSecondary mt-1 leading-normal">Cylindrical bottle wraps, spot varnish giftware, and metallic hot foils.</p>
+        </div>
+        <span class="text-[10px] text-brandTextMetadata border-t border-brandBorder/40 pt-3 mt-4 font-courier">360° Rotary UV & Varnish</span>
+      </div>
+
+    </div>
+
+    <!-- Fleet portals split view -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 pt-6">
+      
+      <!-- Matchmaker suite details -->
+      <div class="lg:col-span-8 flex flex-col gap-6">
+        <div class="bg-brandPanel/40 border border-brandBorder rounded-2xl p-6">
+          <span class="text-[10px] font-courier uppercase text-brandGold font-bold" id="current-sector-tag">Active Sector</span>
+          <h3 class="font-serifTitle italic text-2xl font-bold text-brandTextPrimary mt-1.5" id="current-sector-title">Home Textile & Fast Fashion</h3>
+          <p class="text-xs text-brandTextSecondary mt-2 leading-relaxed font-inter" id="current-sector-desc">
+            Industrial dye-sublimation and direct-to-fabric solutions matched with high-yield thermal calenders and digital fabric cutting laser lines.
+          </p>
+        </div>
+
+        <!-- Machineries -->
+        <div class="bg-brandPanel border border-brandBorder rounded-2xl p-6">
+          <h4 class="font-serifTitle italic text-lg text-brandTextPrimary border-b border-brandBorder pb-3 mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-print text-brandGold"></i> Matched Hardware Solutions
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="matched-hardware-grid">
+            <!-- Injected dynamically by JS -->
+          </div>
+        </div>
+
+        <!-- Consumables -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-brandPanel border border-brandBorder rounded-2xl p-6">
+            <h4 class="font-serifTitle italic text-base text-brandTextPrimary border-b border-brandBorder pb-2.5 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-droplet text-brandGold"></i> Coordinated Chemical Inks
+            </h4>
+            <div id="matched-ink-details" class="space-y-3">
+              <!-- Injected dynamically by JS -->
+            </div>
+          </div>
+          <div class="bg-brandPanel border border-brandBorder rounded-2xl p-6">
+            <h4 class="font-serifTitle italic text-base text-brandTextPrimary border-b border-brandBorder pb-2.5 mb-4 flex items-center gap-2">
+              <i class="fa-solid fa-scroll text-brandGold"></i> Matched Media Rolls
+            </h4>
+            <div id="matched-paper-details" class="space-y-3">
+              <!-- Injected dynamically by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Configurator panel -->
+      <div class="lg:col-span-4 flex flex-col gap-6">
+        <div class="bg-brandPanel border border-brandBorder rounded-2xl p-6 sticky top-24 shadow-2xl space-y-4">
+          <div class="flex items-center gap-2 border-b border-brandBorder pb-3">
+            <i class="fa-solid fa-sliders text-brandGold"></i>
+            <h3 class="font-outfit text-sm font-bold text-brandTextPrimary uppercase tracking-wider">B2B Utility Configurator</h3>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandGold font-bold">Select Active Machine</label>
+            <select id="config-machine" onchange="onMachineSelect()" class="w-full bg-brandBg border border-brandBorder rounded-lg px-3 py-2.5 text-brandTextPrimary text-xs focus:outline-none focus:border-brandGold font-semibold"></select>
+          </div>
+
+          <!-- Printing Width Selector Container -->
+          <div class="flex flex-col gap-1.5 pt-1">
+            <label class="font-courier text-[9px] uppercase text-brandGold font-bold">Select Print Width Option</label>
+            <div id="config-width-container" class="grid grid-cols-3 gap-2">
+              <!-- Dynamic buttons rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Dynamic Printheads config slider -->
+          <div class="flex flex-col gap-1.5 pt-1" id="config-heads-slider-container">
+            <div class="flex justify-between items-center text-[9px] font-courier uppercase font-bold">
+              <span class="text-brandGold">Printheads Array</span>
+              <span id="config-heads-badge" class="text-brandTextPrimary font-bold">8 Heads</span>
+            </div>
+            <input type="range" id="config-heads-slider" min="2" max="32" step="2" value="8" oninput="updateConfigValues()" class="w-full accent-brandGold cursor-pointer">
+          </div>
+
+          <!-- Daily Hours slider -->
+          <div class="flex flex-col gap-1.5 pt-1">
+            <div class="flex justify-between items-center text-[9px] font-courier uppercase font-bold">
+              <span class="text-brandGold">Daily Production Hours</span>
+              <span id="config-hours-badge" class="text-brandTextPrimary font-bold">8 Hours</span>
+            </div>
+            <input type="range" id="config-hours-slider" min="1" max="24" step="1" value="8" oninput="updateConfigValues()" class="w-full accent-brandGold cursor-pointer">
+          </div>
+
+          <!-- simulated bento stats panel -->
+          <div class="bg-brandBg border border-brandBorder rounded-xl p-4 space-y-3 mt-4 text-xs font-outfit">
+            <div class="text-[9px] font-courier text-brandGold border-b border-brandBorder/50 pb-1.5 uppercase font-bold tracking-wider">Simulated Output Profile</div>
+            <div class="flex justify-between"><span>Daily Print Volume:</span><span id="calc-volume" class="text-brandTextPrimary font-bold">0 sqm / day</span></div>
+            <div class="flex justify-between"><span>Daily Ink Draw:</span><span id="calc-ink-usage" class="text-brandTextPrimary font-semibold">0 L / day</span></div>
+            <div class="flex justify-between"><span>Daily Media Draw:</span><span id="calc-media-rolls" class="text-brandTextPrimary font-semibold">0 sqm / day</span></div>
+            <div class="flex justify-between"><span>Daily Power Draw:</span><span id="calc-power-usage" class="text-brandTextPrimary font-semibold">0 kW / day</span></div>
+            <div class="flex justify-between border-t border-brandBorder/80 pt-2 text-sm">
+              <span class="text-brandTextSecondary font-bold">Simulated Suite Cost:</span>
+              <span id="calc-investment-budget" class="text-brandGold font-serifTitle italic font-bold">$0 USD</span>
+            </div>
+          </div>
+
+          <button onclick="scrollToQuoteForm()" class="w-full bg-brandGold text-brandBg hover:bg-brandGoldHover py-3.5 rounded-xl font-outfit font-bold text-xs uppercase tracking-wider mt-4 transition-all duration-300">
+            Proceed to proposal document
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RFQ Lead Capturing form -->
+    <div class="bg-brandPanel border border-brandBorder rounded-3xl p-8 max-w-2xl mx-auto mt-12" id="lead-rfq-block">
+      <div class="text-center mb-8">
+        <h3 class="font-serifTitle italic text-2xl text-brandTextPrimary font-bold">Instant B2B Proposal Builder</h3>
+        <p class="text-xs text-brandTextSecondary leading-relaxed mt-2">Submit details to compile your customized commercial quote booklet dynamically.</p>
+      </div>
+
+      <form id="lead-submission-form" onsubmit="onLeadSubmit(event)" class="space-y-4">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Contact Person Name *</label>
+            <input type="text" id="lead-name-input" value="Nour" required class="bg-brandBg border border-brandBorder rounded-lg px-4 py-2.5 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Company / Factory Name *</label>
+            <input type="text" id="lead-company-input" value="Cairo Textiles Co." required class="bg-brandBg border border-brandBorder rounded-lg px-4 py-2.5 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Contact WhatsApp *</label>
+            <input type="tel" id="lead-phone-input" value="+20 102 345 6789" required class="bg-brandBg border border-brandBorder rounded-lg px-4 py-2.5 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Corporate Email *</label>
+            <input type="email" id="lead-email-input" value="nour@textiles.eg" required class="bg-brandBg border border-brandBorder rounded-lg px-4 py-2.5 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Allocated Budget *</label>
+            <select id="lead-budget-input" required class="bg-brandBg border border-brandBorder rounded-lg px-4 py-2.5 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+              <option value="$10,000 - $30,000">$10,000 - $30,000</option>
+              <option value="$30,000 - $80,000">$30,000 - $80,000</option>
+              <option value="$80,000 - $150,000" selected>$80,000 - $150,000</option>
+              <option value="$150,000 - $250,000">$150,000 - $250,000</option>
+              <option value="Above $250,000">Above $250,000</option>
+            </select>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Delivery Timeline *</label>
+            <select id="lead-timeline-input" required class="bg-brandBg border border-brandBorder rounded-lg px-4 py-2.5 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+              <option value="Immediate (Within 30 days)">Immediate (Within 30 days)</option>
+              <option value="Q3 2026 (Next 3 months)" selected>Q3 2026 (Next 3 months)</option>
+              <option value="Q4 2026 (Next 6 months)">Q4 2026 (Next 6 months)</option>
+              <option value="Long Term Planning">Long Term Planning</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-brandCrimson hover:bg-brandCrimsonHover text-brandTextPrimary py-4 rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition duration-300 mt-4">
+          Compile Proposal Booklet
+        </button>
+      </form>
+    </div>
+
+  </main>
+
+  <!-- PDF Proposal Modal container -->
+  <div id="quotation-proposal-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-md overflow-y-auto hidden flex items-center justify-center p-4">
+    <div class="w-full max-w-4xl bg-brandPanel border border-brandBorder rounded-3xl p-8 relative print-container flex flex-col gap-6">
+      
+      <div class="flex justify-between items-center border-b border-brandBorder pb-4 no-print">
+        <span class="font-courier text-xs uppercase tracking-widest text-brandGold font-bold flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span> Proposal Compiled Successfully
+        </span>
+        <div class="flex gap-3">
+          <button onclick="window.print()" class="bg-brandGold text-brandBg hover:bg-brandGoldHover px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider font-outfit transition duration-200">Print / Save PDF</button>
+          <button onclick="closeQuotationModal()" class="bg-brandBg border border-brandBorder text-brandTextPrimary hover:border-brandGold/40 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider font-outfit transition duration-200">Close</button>
+        </div>
+      </div>
+
+      <!-- Printable area -->
+      <div class="p-6 md:p-12 bg-[#0d0d0f] border border-brandBorder rounded-2xl flex flex-col gap-8 text-left relative overflow-hidden print-container" id="quotation-document-sheet">
+        <div class="absolute top-0 left-0 right-0 h-1.5 bg-brandGold"></div>
+        
+        <div class="flex justify-between items-start gap-4 border-b border-brandBorder pb-6">
+          <div class="flex flex-col gap-1">
+            <div class="text-3xl font-extrabold tracking-[0.25em] text-brandTextPrimary uppercase font-outfit">EGYGRAFX<span class="text-brandGold">.</span></div>
+            <div class="text-[9px] uppercase font-courier tracking-widest text-brandTextMetadata font-bold">The Hub for Printing Intelligence</div>
+          </div>
+          <div class="text-right">
+            <span class="font-courier text-[10px] uppercase text-brandGold font-bold">B2B Commercial Booklet</span>
+            <div class="text-[9px] font-courier text-brandTextMetadata mt-1">Ref: RFQ-2026-085-A &bull; Live Staging</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 bg-brandPanel/40 border border-brandBorder rounded-xl p-6 text-xs">
+          <div class="flex flex-col gap-1.5">
+            <span class="font-courier text-[9px] uppercase text-brandGold font-bold">Prepared Specially For:</span>
+            <div class="font-serifTitle italic text-base font-bold text-brandTextPrimary" id="doc-client-company">Cairo Textiles Co.</div>
+            <div id="doc-client-name" class="font-medium">Attention: Nour</div>
+            <div id="doc-client-phone">Phone: +20 102 345 6789</div>
+            <div id="doc-client-email">Email: nour@textiles.eg</div>
+          </div>
+          <div class="text-right flex flex-col justify-between items-end gap-3">
+            <div>
+              <span class="font-courier text-[9px] uppercase text-brandGold font-bold">Quotation Date:</span>
+              <div class="text-brandTextPrimary font-medium font-courier">June 1, 2026</div>
+            </div>
+            <div class="flex flex-col items-end gap-1 font-courier text-[10px]">
+              <div class="text-brandGold font-bold" id="doc-client-budget">Client Budget Scope</div>
+              <div class="text-brandTextSecondary" id="doc-client-timeline">Expected Installation</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- component quotation table -->
+        <div class="flex flex-col gap-4">
+          <h4 class="font-courier text-[10px] uppercase tracking-widest text-brandGold font-bold border-b border-brandBorder/50 pb-2">Line Items Breakdown</h4>
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-brandBorder text-brandGold font-courier text-[9px] uppercase">
+                <th class="py-2 pr-4 w-1/3">Component</th>
+                <th class="py-2 px-4 w-1/2">Product Specifications</th>
+                <th class="py-2 px-4 text-center">Qty</th>
+                <th class="py-2 pl-4 text-right">Est. Price (USD)</th>
+              </tr>
+            </thead>
+            <tbody id="doc-quotation-table-body" class="divide-y divide-brandBorder/40">
+              <!-- Injected by JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- productivity projections summary -->
+        <div class="border border-brandBorder bg-brandPanel/20 rounded-xl p-6 flex flex-col gap-3">
+          <h4 class="font-courier text-[10px] uppercase tracking-widest text-brandGold border-b border-brandBorder pb-1 font-bold">Configured Production Output Projections</h4>
+          <div class="grid grid-cols-4 gap-4 text-xs font-courier">
+            <div><span class="text-brandTextMetadata text-[9px]">DAILY OUTPUT</span><div class="text-brandTextPrimary font-bold mt-0.5" id="doc-stat-output">0 sqm</div></div>
+            <div><span class="text-brandTextMetadata text-[9px]">DAILY INK DRAW</span><div class="text-brandTextPrimary font-bold mt-0.5" id="doc-stat-ink">0 L</div></div>
+            <div><span class="text-brandTextMetadata text-[9px]">DAILY MEDIA DRAW</span><div class="text-brandTextPrimary font-bold mt-0.5" id="doc-stat-media">0 sqm</div></div>
+            <div><span class="text-brandTextMetadata text-[9px]">UTILITY POWER DRAW</span><div class="text-brandGold font-bold mt-0.5" id="doc-stat-power">0 kW</div></div>
+          </div>
+        </div>
+
+        <!-- payment milestones and terms and conditions -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <div class="border border-brandBorder bg-brandPanel/20 rounded-xl p-6 flex flex-col gap-3 text-xs">
+            <h4 class="font-courier text-[10px] uppercase tracking-widest text-brandGold border-b border-brandBorder pb-2 font-bold">Staged Commercial Milestones</h4>
+            <div class="space-y-2 font-courier text-[11px] text-brandTextSecondary">
+              <div class="flex justify-between"><span>60% Design & Spec Lock:</span><span class="text-brandTextPrimary font-bold" id="doc-milestone-m1">$0.00</span></div>
+              <div class="flex justify-between"><span>20% Equipment Assembly:</span><span class="text-brandTextPrimary font-bold" id="doc-milestone-m2">$0.00</span></div>
+              <div class="flex justify-between"><span>10% Onsite Integration:</span><span class="text-brandTextPrimary font-bold" id="doc-milestone-m3">$0.00</span></div>
+              <div class="flex justify-between"><span>10% Team Training Handoff:</span><span class="text-brandTextPrimary font-bold" id="doc-milestone-m4">$0.00</span></div>
+              <div class="flex justify-between border-t border-brandBorder/60 pt-2 text-xs font-bold">
+                <span class="text-brandGold">Grand Total (incl. 0.5% Tax):</span>
+                <span class="text-brandGold" id="doc-milestone-total">$0.00</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="border border-brandBorder bg-brandPanel/20 rounded-xl p-6 flex flex-col gap-3 text-xs">
+            <h4 class="font-courier text-[10px] uppercase tracking-widest text-brandGold border-b border-brandBorder pb-2 font-bold">B2B Standard Terms</h4>
+            <ul class="list-disc list-inside space-y-1.5 text-brandTextSecondary leading-relaxed text-[11px]">
+              <li><strong>Lead Time:</strong> 30 calendar days from Milestone 1 deposit.</li>
+              <li><strong>Site Prep:</strong> Customer must supply dedicated power breaker.</li>
+              <li><strong>Warranty:</strong> 12-month parts and labor, excluding consumable heads.</li>
+              <li><strong>Support:</strong> 24/7 hotline with remote and onsite telemetry diagnostic calibration sync.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- double-signature blocks -->
+        <div class="grid grid-cols-2 gap-8 pt-8 border-t border-brandBorder/40 text-xs font-courier mt-4">
+          <div class="flex flex-col gap-4">
+            <span class="text-brandGold font-bold uppercase text-[9px] tracking-widest">FOR EGYGRAFX. SOLUTIONS DESK:</span>
+            <div class="space-y-1 text-brandTextSecondary text-[11px]">
+              <div class="font-serifTitle italic text-sm font-bold text-brandTextPrimary">Nour</div>
+              <div class="text-[10px]">B2B Industrial Solutions Architect</div>
+              <div>WhatsApp: +20 102 345 6789</div>
+              <div>Email: sales@egygrafx.com</div>
+              <div class="pt-6 text-brandTextMetadata italic">Electronic Authorization Sync: Nour.SecureAuth.2026</div>
+            </div>
+          </div>
+          <div class="flex flex-col justify-between gap-4">
+            <span class="text-brandGold font-bold uppercase text-[9px] tracking-widest">FOR AUTHORIZED CLIENT REPRESENTATIVE:</span>
+            <div class="space-y-1 text-brandTextSecondary text-[11px] flex-grow flex flex-col justify-end">
+              <div class="font-serifTitle italic text-sm font-bold text-brandTextPrimary" id="doc-sig-client-name">Client Name</div>
+              <div class="text-[10px]" id="doc-sig-client-company">Company / Factory Name</div>
+              <div class="h-10 border-b border-brandBorder/80 w-48 mt-4"></div>
+              <div class="text-[9px] text-brandTextMetadata pt-2">Authorized Signature & Date Stamp</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="no-print border-t border-brandBorder bg-brandPanel py-4 px-12 text-center text-brandTextMetadata text-xs font-courier">
+    &copy; 2026 EGYGRAFX. Matchmaker Gateway Staging.
+  </footer>
+
+  <script>
+    const database = [
+      {
+        id: "home-textile",
+        tag: "Sector 01",
+        title: "Home Textile & Fast Fashion",
+        description: "Industrial dye-sublimation and direct-to-fabric solutions matched with high-yield thermal calenders and digital fabric cutting laser lines. Deployed for Nour's fast fashion textile mill in Al-Mahalla.",
+        multiplier: 1.0, // Sublimation baseline
+        hardware: [
+          { id: "dgi-poseidon-2", brand: "DGI", model: "Poseidon II Sublimation", origin: "South Korea", heads: "Kyocera Piezo Array", defaultHeads: 8, minHeads: 4, maxHeads: 16, stepHeads: 4, maxWidth: "1.82 meters", widths: [1.62, 1.82], speed: 450, powerDraw: 12.0, basePrice: 85000, costPerHeadPair: 7000, note: "Industry benchmark for high-speed continuous roll sublimation.", inkSystem: "INKTEX Premium Dye-Sublimation Ink", mediaSystem: "NOVARES ROMA 8 Sublimation Paper" },
+          { id: "dpi-b2-sub", brand: "DPI", model: "B2 Sublimation Series", origin: "China", heads: "Epson i3200 Array", defaultHeads: 8, minHeads: 4, maxHeads: 16, stepHeads: 4, maxWidth: "1.80 meters", widths: [1.80, 2.60], speed: 380, powerDraw: 8.5, basePrice: 62000, costPerHeadPair: 4500, note: "Cost-effective, highly durable transfer printing option.", inkSystem: "INKTEX Premium Dye-Sublimation Ink", mediaSystem: "NOVARES ROMA 8 Sublimation Paper" }
+        ],
+        ink: { name: "INKTEX Sublimation Ink Suite", brand: "INKTEX", origin: "South Korea", type: "Dye-Sublimation Fluid (Oeko-Tex Certified)", headsOptimized: "Kyocera / Epson optimized", packaging: "5L / 10L Industrial Jugs", properties: "Ultra-high pigment density, instantaneous curing speed, rich solid blacks, and standard Oeko-Tex Eco-Passport certificate." },
+        media: { name: "NOVARES ROMA 8 Sublimation Paper", brand: "Novares", origin: "Italy", weight: "45 gsm - 70 gsm", widths: "1.62m, 1.82m, 2.60m", finishes: "Premium fast-dry clay coating", properties: "99% ink transfer yield, dimensional stability against heavy ink load, and minimal thermal shrinkage." }
+      },
+      {
+        id: "t-shirts",
+        tag: "Sector 02",
+        title: "T-Shirts & Pieces",
+        description: "Direct-to-Garment (DTG) and Direct-to-Film (DTF) transfer setups. Highly elastic white and CMYK inks matched with automatic inline powder shakers and heaters.",
+        multiplier: 2.1, // DTF high-density white + CMYK
+        hardware: [
+          { id: "polyprint-filmjet", brand: "PolyPrint", model: "FILMJET DTF Roll-to-Roll", origin: "Greece", heads: "Epson i3200", defaultHeads: 4, minHeads: 2, maxHeads: 8, stepHeads: 2, maxWidth: "0.60 meters", widths: [0.60], speed: 35, powerDraw: 4.5, basePrice: 28000, costPerHeadPair: 3200, note: "Advanced DTF system with automated powder applicator and inline conveyor dryer.", inkSystem: "INKTEX DTF Premium Pigment Ink", mediaSystem: "Double-Matte Hot Peel DTF Film" },
+          { id: "polyprint-texjet", brand: "PolyPrint", model: "Texjet NG Direct Hybrid", origin: "Greece", heads: "Epson PrecisionCore", defaultHeads: 2, minHeads: 2, maxHeads: 4, stepHeads: 2, maxWidth: "0.50 meters", widths: [0.50], speed: 20, powerDraw: 3.2, basePrice: 14000, costPerHeadPair: 2800, note: "Garment printers with unique hybrid DTG and DTF printing methods.", inkSystem: "INKTEX DTG Pigment Ink", mediaSystem: "Cotton / Poly Blended Fabrics" }
+        ],
+        ink: { name: "INKTEX DTF Elastic Inks", brand: "INKTEX", origin: "South Korea", type: "Elastic Pigment Ink (White & CMYK)", headsOptimized: "Epson i3200 optimized", packaging: "1L Bottles / 5L Jugs", properties: "Excellent washing stretchability, zero white ink clogging due to active circulation pump sync, and high opacity solid white layer." },
+        media: { name: "Premium Hot/Cold Peel DTF Film", brand: "EGYGRAFX Coordinated", origin: "Taiwan", weight: "75 micron double-matte", widths: "60cm width rolls", finishes: "Double-sided anti-static coating", properties: "Perfect powder release, high ink absorption capacity, and crisp detail print resolution." }
+      },
+      {
+        id: "carpet-rugs",
+        tag: "Sector 03",
+        title: "Carpet, Mats & Rugs",
+        description: "Extra-wide format direct disperse or sublimation lines. Heavy-duty chassis and industrial printheads paired with high-pile piece-to-piece vacuum laminating calenders.",
+        multiplier: 1.2, // Carpet disperse chemistry
+        hardware: [
+          { id: "bydi-xc-carpet", brand: "BYDi", model: "XC series Direct Carpet", origin: "China", heads: "Starfire 1024", defaultHeads: 8, minHeads: 8, maxHeads: 24, stepHeads: 8, maxWidth: "3.20 meters", widths: [2.70, 3.20], speed: 320, powerDraw: 18.0, basePrice: 120000, costPerHeadPair: 8500, note: "Heavy-duty industrial printheads optimized for thick textured rug fibers.", inkSystem: "High-Penetration Carpet Disperse Ink", mediaSystem: "High-Absorption Sublimation Paper" },
+          { id: "oric-tx-carpet", brand: "ORIC", model: "TX Carpet Sublimation", origin: "China", heads: "Epson i3200 Array", defaultHeads: 12, minHeads: 8, maxHeads: 16, stepHeads: 4, maxWidth: "4.30 meters", widths: [3.20, 4.30], speed: 280, powerDraw: 15.0, basePrice: 85000, costPerHeadPair: 4200, note: "Extra-wide format dye sublimation printer targeting luxury carpets and mats.", inkSystem: "High-Penetration Carpet Disperse Ink", mediaSystem: "High-Absorption Sublimation Paper" }
+        ],
+        ink: { name: "High-Penetration Disperse Inks", brand: "Sun Chemical / MS", origin: "USA / Europe", type: "Heavy Disperse Fluid", headsOptimized: "Starfire 1024 / Epson optimized", packaging: "20L Industrial Kegs", properties: "Acid-free chemical formulation, optimized viscosity for deep pile vertical capillary migration, and excellent sun exposure UV lightfastness." },
+        media: { name: "Heavy High-Absorption Sublimation Paper", brand: "Novares Coordinated", origin: "Italy", weight: "90 gsm - 120 gsm", widths: "3.2m, 4.3m extra-wide widths", finishes: "High-capacity clay release coating", properties: "Eliminates fiber ghosting, handles heavy ink loading without wrinkling, and maintains lateral roll alignment." }
+      },
+      {
+        id: "cad-cam",
+        tag: "Sector 04",
+        title: "Hi-Tech Industrial CAD/CAM",
+        description: "Automotive interior leather engraving, footwear synthetics, high-precision technical engineering drafting, and high-performance flatbed cutting tables.",
+        multiplier: 0.0, // Waterless laser cutters
+        hardware: [
+          { id: "gbos-auto-laser", brand: "GBOS", model: "Laser Cutting & Marking", origin: "China", heads: "CO2 Laser Source", defaultHeads: 2, minHeads: 2, maxHeads: 4, stepHeads: 2, maxWidth: "2.50 meters", widths: [1.80, 2.50], speed: 720, powerDraw: 14.5, basePrice: 48000, costPerHeadPair: 12000, note: "Laser marking, perforating, engraving, and cutting for all kinds of fabrics and automotive leathers.", inkSystem: "None (Mechanical Waterless)", mediaSystem: "Automotive Interior Fabric / Synthetic Leather" },
+          { id: "hp-pagewide-xl", brand: "HP", model: "PageWide XL 8200 Technical", origin: "USA", heads: "PageWide Array", defaultHeads: 8, minHeads: 8, maxHeads: 8, stepHeads: 0, maxWidth: "1.01 meters", widths: [0.91, 1.01], speed: 1800, powerDraw: 5.5, basePrice: 32000, costPerHeadPair: 0, note: "Industrial high-speed CAD drafting, architectural blueprint mapping, and technical sheets.", inkSystem: "HP PageWide Pigment Inks", mediaSystem: "Bond Paper / CAD Plotter Rolls" }
+        ],
+        ink: { name: "Eco-Friendly Process Chemistry / None", brand: "HP / GBOS", origin: "USA", type: "Non-Ink Laser Burn / Pigment Ink", headsOptimized: "PageWide Array optimized", packaging: "5L Ink Tanks / Cartridges", properties: "Dry, odor-free, non-hazardous emission profiles, and ultra-high chemical stability." },
+        media: { name: "Industrial Drafting & Structural Media", brand: "EGYGRAFX Certified", origin: "Germany", weight: "75 gsm - 150 gsm", widths: ["0.91m", "1.01m"], finishes: "Matte uncoated bond roll", properties: "Excellent feed stability on fast vacuum conveyor belts, preventing paper slip during automated knife or laser passes." }
+      },
+      {
+        id: "signage",
+        tag: "Sector 05",
+        title: "Signage & Display Graphics",
+        description: "Indoor signage displays, window wraps, graphic canvas, and commercial vehicle graphics. High-durability odorless latex and hybrid UV printers.",
+        multiplier: 1.0, // Latex standard
+        hardware: [
+          { id: "hp-latex-800w", brand: "HP", model: "Latex 800 W White-Ink Edition", origin: "USA", heads: "HP Thermal Inkjet Array", defaultHeads: 8, minHeads: 8, maxHeads: 8, stepHeads: 0, maxWidth: "1.63 meters", widths: [1.37, 1.63], speed: 36, powerDraw: 2.5, basePrice: 29000, costPerHeadPair: 0, note: "High-opacity white ink printing on dark and transparent self-adhesives with instant curing latex chemistry.", inkSystem: "HP Latex 832 Water-Based Inks", mediaSystem: "EGYGRAFX Coordinated Self-Adhesive Vinyl" },
+          { id: "ldp-trex3-hybrid", brand: "LDP", model: "T-REX3 LED-UV Hybrid", origin: "China", heads: "Epson i3200 Array", defaultHeads: 6, minHeads: 4, maxHeads: 12, stepHeads: 2, maxWidth: "3.20 meters", widths: [2.00, 3.20], speed: 110, powerDraw: 5.5, basePrice: 48000, costPerHeadPair: 3500, note: "UV-LED hybrid printer targeting both flexible rolls and rigid signboards.", inkSystem: "EGYGRAFX UV-LED Resin Inks", mediaSystem: "Sticker Vinyl & Rigid Acrylic Sheets" }
+        ],
+        ink: { name: "HP Latex 832 Water-Based Ink Suite", brand: "HP", origin: "USA", type: "Water-Based Latex Pigment (UL ECOLOGO Certified)", headsOptimized: "HP Thermal Inkjet optimized", packaging: "1L / 3L Eco-Cartons", properties: "Odourless water-based chemistry, immediate scratch-resistant curing, outdoor durability without lamination, and high opacity solid white." },
+        media: { name: "EGYGRAFX Graphic Vinyl & Canvas", brand: "3M / MacTac Approved", origin: "USA / Europe", weight: "80 micron monomeric/polymeric", widths: "1.37m, 1.52m, 1.62m", finishes: "Gloss, Semi-Gloss, and Matte finishes", properties: "Perfect dimensional stability, excellent ink absorption, air-free bubble release backing, and clean adhesive removability." }
+      },
+      {
+        id: "wallpaper",
+        tag: "Sector 06",
+        title: "Wall Covering & Home Décor",
+        description: "Odorless custom wallpapers and home decor prints. Environmentally certified water-based latex systems paired with precision flatbed wallpaper cutters.",
+        multiplier: 1.0, // Odorless wallpaper standard
+        hardware: [
+          { id: "hp-latex-800w-wall", brand: "HP", model: "Latex 800 W Wallpaper Pro", origin: "USA", heads: "HP Thermal Inkjet Array", defaultHeads: 8, minHeads: 8, maxHeads: 8, stepHeads: 0, maxWidth: "1.63 meters", widths: [1.37, 1.63], speed: 36, powerDraw: 2.5, basePrice: 29000, costPerHeadPair: 0, note: "Perfect odorless wall covering print system, producing dry prints directly from the machine for immediate B2B mounting.", inkSystem: "HP Latex 832 Water-Based Inks", mediaSystem: "Premium Non-Woven Wallpaper Roll" },
+          { id: "oric-5806e-uv", brand: "ORIC", model: "5806E Texture UV", origin: "China", heads: "Epson i3200 Heads", defaultHeads: 4, minHeads: 2, maxHeads: 8, stepHeads: 2, maxWidth: "1.62 meters", widths: [1.37, 1.62], speed: 48, powerDraw: 3.8, basePrice: 22500, costPerHeadPair: 3200, note: "Specialty texture UV printer for 3D tactile wallpaper embossing and gold foil hot stamping.", inkSystem: "EGYGRAFX UV Texture Inks", mediaSystem: "Embossed Wallpaper Canvas" }
+        ],
+        ink: { name: "HP Latex Odorless Interior Inks", brand: "HP", origin: "USA", type: "Odor-free Water-based Latex (GREENGUARD Gold)", headsOptimized: "HP Thermal Inkjet optimized", packaging: "3L Ink Cartridges", properties: "Meets strict chemical emissions standards for indoor air quality, making it ideal for hospitals, schools, and custom luxury residences." },
+        media: { name: "Premium Non-Woven Coated Wallpaper", brand: "EGYGRAFX Wallpaper Collection", origin: "Germany / Italy", weight: "130 gsm - 180 gsm", widths: "1.07m, 1.37m, 1.52m", finishes: "Textured Sand, Canvas, and Fine Grain", properties: "Washable, breathable non-woven backing, peelable removal, and excellent fire-retardancy EuroClass standard certification." }
+      },
+      {
+        id: "outdoor",
+        tag: "Sector 07",
+        title: "Outdoor Advertising",
+        description: "Super-wide banners, giant highway billboards, and street furniture graphics. Heavy-duty 5m UV/Solvent roll-to-roll workhorses paired with rotary trimmers.",
+        multiplier: 0.9, // Solvents are light density
+        hardware: [
+          { id: "jhf-r7000-pro", brand: "JHF", model: "R7000 Pro UV 5.3m", origin: "China", heads: "Kyocera Industrial Piezo", defaultHeads: 12, minHeads: 8, maxHeads: 24, stepHeads: 4, maxWidth: "5.30 meters", widths: [3.20, 5.30], speed: 320, powerDraw: 15.5, basePrice: 145000, costPerHeadPair: 7000, note: "Massive 5.3-meter ultra-heavy industrial UV printer targeting giant billboards and high-speed multi-roll outdoor signs.", inkSystem: "JHF UV-Cured Pigment Ink", mediaSystem: "Heavy Industrial Flex & Banner Roll" },
+          { id: "magicjet-5200-uv", brand: "MagicJet", model: "5200mm UV Twin Carriage", origin: "China", heads: "Konica 1024 Printheads", defaultHeads: 8, minHeads: 4, maxHeads: 16, stepHeads: 4, maxWidth: "5.20 meters", widths: [3.20, 5.20], speed: 240, powerDraw: 11.0, basePrice: 98000, costPerHeadPair: 4800, note: "Reliable 5.2m twin carriage UV roll printer for high-speed double-sided billboard campaigns.", inkSystem: "EGYGRAFX High-Flex UV Inks", mediaSystem: "Outdoor PVC Banner Film" }
+        ],
+        ink: { name: "JHF Heavy-Duty UV-LED Ink Suite", brand: "JHF / EGYGRAFX", origin: "Taiwan", type: "High-Elasticity UV-LED Curable Resin", headsOptimized: "Kyocera Piezo optimized", packaging: "5L Double-Sealed Industrial Jugs", properties: "Instant dual-UV lamp curing, high flexibility to prevent cracking when folded, and 5-year outdoor fade resistance." },
+        media: { name: "Heavy Industrial Outdoor Banner & Flex", brand: "EGYGRAFX Extreme Collection", origin: "Taiwan / Korea", weight: "440 gsm - 510 gsm frontlit / backlit", widths: "3.2m, 5.0m, 5.3m jumbo rolls", finishes: "High-Gloss & Matte outdoor finish", properties: "Superb tensile tear resistance, high thermal stability for desert solar exposure, and wind-loading resistance." }
+      },
+      {
+        id: "packaging",
+        tag: "Sector 08",
+        title: "Packaging & Labeling",
+        description: "Single-pass water-based corrugated board carton lines, labels setups, and dynamic crease tables. Food-grade eco-friendly aqueous printing engines.",
+        multiplier: 0.8, // Aqueous single pass is fast and light
+        hardware: [
+          { id: "jhf-cz2516-pack", brand: "JHF", model: "CZ2516 Corrugated Single-Pass", origin: "China", heads: "Kyocera Industrial", defaultHeads: 16, minHeads: 16, maxHeads: 32, stepHeads: 8, maxWidth: "2.50 meters", widths: [1.60, 2.50], speed: 1200, powerDraw: 28.5, basePrice: 185000, costPerHeadPair: 7000, note: "Industrial giant running water-based food-safe chemistry at blistering speeds for cardboard boxes.", inkSystem: "HP Food-Safe Aqueous Ink", mediaSystem: "Corrugated Carton Boards" },
+          { id: "oric-lc330-label", brand: "ORIC", model: "LC-330 Label Crease & Cut", origin: "China", heads: "Epson i3200 Heads", defaultHeads: 4, minHeads: 2, maxHeads: 8, stepHeads: 2, maxWidth: "0.33 meters", widths: [0.33], speed: 80, powerDraw: 3.5, basePrice: 18000, costPerHeadPair: 3200, note: "Label printer & slot cutter with dynamic blade tracking for customized B2B shapes.", inkSystem: "Mimaki approved UV Label Inks", mediaSystem: "Self-Adhesive PP / PET Label Rolls" }
+        ],
+        ink: { name: "HP Food-Grade Aqueous Inks", brand: "HP Coordinated", origin: "USA", type: "Water-based Aqueous Pigment (Food-Contact Certified)", headsOptimized: "Kyocera Piezo optimized", packaging: "10L Bulk Containers", properties: "100% odorless, food-safe, certified for primary food packaging without dynamic plastic migrations, and instant infrared drying." },
+        media: { name: "Corrugated Cardboard & Label Stocks", brand: "EGYGRAFX Kraft Collection", origin: "Egypt / Finland", weight: "120 gsm - 450 gsm single/double wall", widths: "1.6m, 2.5m sheets", finishes: "Kraft brown, Bleached white coated", properties: "Superior dimensional flat stability, excellent aqueous dye holdout, high crush resistance, and perfect fold crease adaptability." }
+      },
+      {
+        id: "personalization",
+        tag: "Sector 09",
+        title: "Promotional & Personalization",
+        description: "Rotary 360 cylinder printing, acrylic sheets, and wood panel craftwork. Curated UV-LED ink configurations paired with rich spot varnishes.",
+        multiplier: 1.6, // UV emboss varnish high-build density
+        hardware: [
+          { id: "mimaki-ujf-6042", brand: "Mimaki", model: "UJF-6042 MkII UV Flatbed", origin: "Japan", heads: "Mimaki Piezo Array", defaultHeads: 4, minHeads: 4, maxHeads: 4, stepHeads: 0, maxWidth: "0.61 meters", widths: [0.61], speed: 15, powerDraw: 1.5, basePrice: 24000, costPerHeadPair: 0, note: "Premium direct-to-object flatbed UV-LED panel printer with dynamic print heights up to 153mm.", inkSystem: "Mimaki LUS-120 Flexible UV Inks", mediaSystem: "Acrylic, Wood, glass and metal sheet substrates" },
+          { id: "oric-rotary-360", brand: "ORIC", model: "Rotary 360 UV Cup Printer", origin: "China", heads: "Ricoh Gen5 Array", defaultHeads: 3, minHeads: 3, maxHeads: 6, stepHeads: 3, maxWidth: "0.30 meters", widths: [0.30], speed: 55, powerDraw: 2.8, basePrice: 15000, costPerHeadPair: 3800, note: "Cylindrical direct-to-object UV rotary cup printer utilizing Ricoh high-resolution printheads.", inkSystem: "EGYGRAFX Coordinated UV Inks", mediaSystem: "Cylindrical Mugs, Bottles, & Tumblers" }
+        ],
+        ink: { name: "Mimaki LUS-120 Flexible UV Inks", brand: "Mimaki / EGYGRAFX", origin: "Japan", type: "Flexible UV-LED Curable Ink with Spot Clear Varnish", headsOptimized: "Mimaki / Ricoh optimized", packaging: "1L Bottles", properties: "120% stretchability, active white ink shaking pump, and 3D textured tactile spot varnish print layers." },
+        media: { name: "Coordinated Promotional Substrates", brand: "EGYGRAFX Craft Collection", origin: "China / Local", weight: "Rigid objects up to 150mm height", widths: "Flatbed 610mm x 420mm size", finishes: "Coated Acrylics, Glass, and Wood blanks", properties: "Checked print adhesion, scratch resistance, chemical compatibility, and optimized primer coverage." }
+      }
+    ];
+
+    let activeSectorId = "home-textile";
+    let activeConfiguratorPrinter = null;
+    let selectedConfigWidthValue = null;
+
+    // Trigger sector select
+    function selectSector(sectorId) {
+      activeSectorId = sectorId;
+      const sector = database.find(s => s.id === sectorId) || database[0];
+      
+      // Update sector UI styling active
+      database.forEach(s => {
+        const card = document.getElementById(`sector-card-${s.id}`);
+        if (card) {
+          card.classList.remove('bento-card-active');
+        }
+      });
+      const activeCard = document.getElementById(`sector-card-${sectorId}`);
+      if (activeCard) {
+        activeCard.classList.add('bento-card-active');
+      }
+
+      document.getElementById("current-sector-tag").innerText = sector.tag;
+      document.getElementById("current-sector-title").innerText = sector.title;
+      document.getElementById("current-sector-desc").innerText = sector.description;
+
+      const hardwareGrid = document.getElementById("matched-hardware-grid");
+      hardwareGrid.innerHTML = "";
+      
+      sector.hardware.forEach(hw => {
+        const hwCard = document.createElement("div");
+        hwCard.className = "bg-brandBg border border-brandBorder hover:border-brandGold/50 rounded-xl p-5 flex flex-col justify-between gap-4 transition-all duration-300 group/item cursor-pointer";
+        hwCard.onclick = () => loadMachineToConfigurator(hw.id);
+        hwCard.innerHTML = `
+          <div>
+            <div class="flex justify-between items-start">
+              <span class="text-xs font-courier text-brandTextMetadata font-bold uppercase">${hw.brand}</span>
+              <span class="text-[9px] font-courier text-brandTextMetadata bg-brandBg border border-brandBorder px-2 py-0.5 rounded font-bold">${hw.origin}</span>
+            </div>
+            <h5 class="text-base font-bold text-brandTextPrimary mt-2 group-hover/item:text-brandGold transition-colors font-outfit">${hw.model}</h5>
+            <p class="text-[11px] text-brandTextSecondary mt-2 leading-relaxed font-inter">${hw.note}</p>
+          </div>
+          <div class="border-t border-brandBorder/40 pt-3 mt-1 space-y-1.5 font-courier text-[10px] text-brandTextSecondary">
+            <div class="flex justify-between"><span>Width:</span><span class="text-brandTextPrimary">${hw.maxWidth}</span></div>
+            <div class="flex justify-between"><span>Speed Cap:</span><span class="text-brandGold font-bold">${hw.speed} sqm/h</span></div>
+          </div>
+        `;
+        hardwareGrid.appendChild(hwCard);
+      });
+
+      document.getElementById("matched-ink-details").innerHTML = `
+        <div class="flex justify-between text-xs"><span>Formula:</span><span class="text-brandTextPrimary font-semibold font-outfit">${sector.ink.name}</span></div>
+        <div class="flex justify-between text-xs"><span>Origin:</span><span class="text-brandTextPrimary">${sector.ink.brand} / ${sector.ink.origin}</span></div>
+        <div class="text-[10px] text-brandTextMetadata font-inter mt-2.5 pt-2 border-t border-brandBorder/40">${sector.ink.properties}</div>
+      `;
+
+      document.getElementById("matched-paper-details").innerHTML = `
+        <div class="flex justify-between text-xs"><span>Media Roll:</span><span class="text-brandTextPrimary font-semibold font-outfit">${sector.media.name}</span></div>
+        <div class="flex justify-between text-xs"><span>Finish:</span><span class="text-brandGold font-semibold">${sector.media.finishes}</span></div>
+        <div class="text-[10px] text-brandTextMetadata font-inter mt-2.5 pt-2 border-t border-brandBorder/40">${sector.media.properties}</div>
+      `;
+
+      const configDropdown = document.getElementById("config-machine");
+      configDropdown.innerHTML = "";
+      sector.hardware.forEach(hw => {
+        const option = document.createElement("option");
+        option.value = hw.id;
+        option.innerText = `${hw.brand} ${hw.model}`;
+        configDropdown.appendChild(option);
+      });
+
+      loadMachineToConfigurator(sector.hardware[0].id);
+    }
+
+    // Load active configurator selections
+    function loadMachineToConfigurator(machineId) {
+      const sector = database.find(s => s.hardware.some(h => h.id === machineId)) || database[0];
+      const machine = sector.hardware.find(h => h.id === machineId);
+      activeConfiguratorPrinter = machine;
+
+      document.getElementById("config-machine").value = machineId;
+
+      // Printheads Array Lock for fixed arrays (e.g. Mimaki Flatbeds or HP Latex with 0 cost heads upgrade)
+      const headContainer = document.getElementById("config-heads-slider-container");
+      if (machine.stepHeads === 0) {
+        headContainer.style.opacity = "0.5";
+        document.getElementById("config-heads-slider").disabled = true;
+        document.getElementById("config-heads-slider").value = machine.defaultHeads;
+        document.getElementById("config-heads-badge").innerText = `${machine.defaultHeads} Heads (Fixed Array)`;
+      } else {
+        headContainer.style.opacity = "1";
+        document.getElementById("config-heads-slider").disabled = false;
+        document.getElementById("config-heads-slider").min = machine.minHeads;
+        document.getElementById("config-heads-slider").max = machine.maxHeads;
+        document.getElementById("config-heads-slider").step = machine.stepHeads;
+        document.getElementById("config-heads-slider").value = machine.defaultHeads;
+        document.getElementById("config-heads-badge").innerText = `${machine.defaultHeads} Heads`;
+      }
+
+      document.getElementById("config-hours-slider").value = 8;
+      document.getElementById("config-hours-badge").innerText = `8 Hours`;
+
+      // Printing widths buttons seeder
+      const widthContainer = document.getElementById("config-width-container");
+      widthContainer.innerHTML = "";
+      machine.widths.forEach((w, idx) => {
+        const wBtn = document.createElement("button");
+        wBtn.type = "button";
+        wBtn.onclick = () => selectConfigWidth(w, wBtn);
+        wBtn.className = `px-2 py-1.5 border rounded-lg font-courier text-[10px] text-center transition-all ${idx === 0 ? 'bg-brandGold text-brandBg border-brandGold font-bold' : 'bg-brandBg text-brandTextSecondary border-brandBorder hover:border-brandGold/50'}`;
+        wBtn.innerText = `${w.toFixed(2)}m`;
+        widthContainer.appendChild(wBtn);
+        if (idx === 0) {
+          selectedConfigWidthValue = w;
+        }
+      });
+
+      updateConfigValues();
+    }
+
+    function selectConfigWidth(width, element) {
+      selectedConfigWidthValue = width;
+      const buttons = element.parentNode.querySelectorAll("button");
+      buttons.forEach(btn => btn.className = "px-2 py-1.5 border bg-brandBg text-brandTextSecondary border-brandBorder rounded-lg font-courier text-[10px] text-center hover:border-brandGold/50 transition-all");
+      element.className = "px-2 py-1.5 border bg-brandGold text-brandBg border-brandGold rounded-lg font-courier text-[10px] text-center font-bold transition-all";
+      updateConfigValues();
+    }
+
+    function onMachineSelect() {
+      const selectVal = document.getElementById("config-machine").value;
+      loadMachineToConfigurator(selectVal);
+    }
+
+    // Dynamic calculators
+    function updateConfigValues() {
+      if (!activeConfiguratorPrinter) return;
+
+      const heads = parseInt(document.getElementById("config-heads-slider").value);
+      const hours = parseInt(document.getElementById("config-hours-slider").value);
+      
+      // Multiplier from active sector
+      const sector = database.find(s => s.hardware.some(h => h.id === activeConfiguratorPrinter.id));
+      const inkMultiplier = sector.multiplier;
+
+      document.getElementById("config-heads-badge").innerText = `${heads} Heads`;
+      document.getElementById("config-hours-badge").innerText = `${hours} Hours`;
+
+      // Formula: daily sqm = speed * (heads / default heads) * hours * 85% efficiency factor
+      const dailyVolume = Math.round(activeConfiguratorPrinter.speed * (heads / activeConfiguratorPrinter.defaultHeads) * hours * 0.85);
+      
+      // Ink formula: 12 ml/sqm * sqm * multiplier
+      const dailyInk = parseFloat((dailyVolume * 0.012 * inkMultiplier).toFixed(1));
+      
+      // Pricing formula: base price + cost of added printhead upgrades
+      let priceOffset = 0;
+      if (activeConfiguratorPrinter.stepHeads > 0) {
+        priceOffset = ((heads - activeConfiguratorPrinter.defaultHeads) / 2) * activeConfiguratorPrinter.costPerHeadPair;
+      }
+      const estimatedBudget = activeConfiguratorPrinter.basePrice + priceOffset;
+
+      document.getElementById("calc-volume").innerText = dailyVolume.toLocaleString() + " sqm / day";
+      document.getElementById("calc-ink-usage").innerText = dailyInk.toLocaleString() + " L / day";
+      document.getElementById("calc-media-rolls").innerText = dailyVolume.toLocaleString() + " sqm / day";
+      document.getElementById("calc-power-usage").innerText = (activeConfiguratorPrinter.powerDraw * hours).toFixed(1) + " kW / day";
+      document.getElementById("calc-investment-budget").innerText = "$" + estimatedBudget.toLocaleString() + " USD";
+    }
+
+    function scrollToQuoteForm() {
+      document.getElementById("lead-rfq-block").scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Form submit proposal generator
+    function onLeadSubmit(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById("lead-name-input").value;
+      const company = document.getElementById("lead-company-input").value;
+      const phone = document.getElementById("lead-phone-input").value;
+      const email = document.getElementById("lead-email-input").value;
+      const budget = document.getElementById("lead-budget-input").value;
+      const timeline = document.getElementById("lead-timeline-input").value;
+
+      const simulatedVol = document.getElementById("calc-volume").innerText;
+      const simulatedInk = document.getElementById("calc-ink-usage").innerText;
+      const simulatedPower = document.getElementById("calc-power-usage").innerText;
+      const simulatedPriceText = document.getElementById("calc-investment-budget").innerText;
+      const numericPrice = parseInt(simulatedPriceText.replace(/[^0-9]/g, ''));
+
+      // Populate document details
+      document.getElementById("doc-client-company").innerText = company;
+      document.getElementById("doc-client-name").innerText = `Attention: ${name}`;
+      document.getElementById("doc-client-phone").innerText = `Phone: ${phone}`;
+      document.getElementById("doc-client-email").innerText = `Email: ${email}`;
+      document.getElementById("doc-client-budget").innerText = `Allocated Budget: ${budget} USD`;
+      document.getElementById("doc-client-timeline").innerText = `Expected Handoff: ${timeline}`;
+      
+      // Update acceptance signatures
+      document.getElementById("doc-sig-client-name").innerText = name;
+      document.getElementById("doc-sig-client-company").innerText = company;
+
+      // Coordinated media items
+      const sector = database.find(s => s.hardware.some(h => h.id === activeConfiguratorPrinter.id));
+      
+      const tableBody = document.getElementById("doc-quotation-table-body");
+      tableBody.innerHTML = `
+        <tr class="border-b border-brandBorder/40">
+          <td class="py-4 pr-4 font-bold text-brandTextPrimary font-outfit">${activeConfiguratorPrinter.brand} ${activeConfiguratorPrinter.model}</td>
+          <td class="py-4 px-4 font-inter text-brandTextSecondary leading-relaxed">
+            Matched hardware print engine configured with custom printhead array (${activeConfiguratorPrinter.heads}). Setup includes operational software calibrations. Width option: ${selectedConfigWidthValue}m.
+          </td>
+          <td class="py-4 px-4 text-center font-courier text-brandTextPrimary">1 unit</td>
+          <td class="py-4 pl-4 text-right font-courier text-brandGold font-bold">$${numericPrice.toLocaleString()}.00</td>
+        </tr>
+        <tr class="border-b border-brandBorder/40">
+          <td class="py-4 pr-4 font-bold text-brandTextPrimary font-outfit">${sector.ink.name}</td>
+          <td class="py-4 px-4 font-inter text-brandTextSecondary leading-relaxed">
+            Coordinated ink chemistry optimized for paired heads. Includes Oeko-Tex certificate.
+          </td>
+          <td class="py-4 px-4 text-center font-courier text-brandTextPrimary">Initial Pack</td>
+          <td class="py-4 pl-4 text-right font-courier text-brandGold font-bold">Included</td>
+        </tr>
+        <tr class="border-b border-brandBorder/40">
+          <td class="py-4 pr-4 font-bold text-brandTextPrimary font-outfit">${sector.media.name}</td>
+          <td class="py-4 px-4 font-inter text-brandTextSecondary leading-relaxed">
+            High transfer media substrate rolls matching width specifications.
+          </td>
+          <td class="py-4 px-4 text-center font-courier text-brandTextPrimary">Jumbo Roll</td>
+          <td class="py-4 pl-4 text-right font-courier text-brandGold font-bold">Included</td>
+        </tr>
+      `;
+
+      // Dynamic stats
+      document.getElementById("doc-stat-output").innerText = simulatedVol;
+      document.getElementById("doc-stat-ink").innerText = simulatedInk;
+      document.getElementById("doc-stat-media").innerText = simulatedVol;
+      document.getElementById("doc-stat-power").innerText = simulatedPower;
+
+      // Milestone calculations
+      const m1 = Math.round(numericPrice * 0.60);
+      const m2 = Math.round(numericPrice * 0.20);
+      const m3 = Math.round(numericPrice * 0.10);
+      const m4 = Math.round(numericPrice * 0.10);
+      const tax = numericPrice * 0.005;
+      const grandTotal = numericPrice + tax;
+
+      document.getElementById("doc-milestone-m1").innerText = "$" + m1.toLocaleString() + ".00";
+      document.getElementById("doc-milestone-m2").innerText = "$" + m2.toLocaleString() + ".00";
+      document.getElementById("doc-milestone-m3").innerText = "$" + m3.toLocaleString() + ".00";
+      document.getElementById("doc-milestone-m4").innerText = "$" + m4.toLocaleString() + ".00";
+      document.getElementById("doc-milestone-total").innerText = "$" + grandTotal.toLocaleString() + ".00";
+
+      // Show modal
+      document.getElementById("quotation-proposal-modal").classList.remove("hidden");
+    }
+
+    function closeQuotationModal() {
+      document.getElementById("quotation-proposal-modal").classList.add("hidden");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      selectSector("home-textile");
+    });
+  </script>
+</body>
+</html>

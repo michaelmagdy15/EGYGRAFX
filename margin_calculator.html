@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EGYGRAFX. | Industrial Cost & ROI Payback Modeler</title>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#0A0A0A',
+            brandPanel: '#121212',
+            brandBorder: '#262626',
+            brandGold: '#D3A572',
+            brandGoldHover: '#C29461',
+            brandTextPrimary: '#F5FAFA',
+            brandTextSecondary: '#A8A8A8',
+            brandTextMetadata: '#6B6B6B',
+            brandCrimson: '#bf243c',
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+            courier: ['Courier Prime', 'Courier', 'monospace'],
+            serifTitle: ['Playfair Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #0A0A0A;
+      color: #A8A8A8;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262626;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D3A572;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-brandGold selection:text-brandBg antialiased">
+
+  <!-- ================= TOP HEADER BRANDING ================= -->
+  <header class="no-print border-b border-brandBorder bg-brandPanel/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 md:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-3">
+      <a href="home_portal_prototype.html" class="text-3xl font-extrabold tracking-[0.25em] text-brandTextPrimary uppercase select-none font-outfit">
+        EGYGRAFX<span class="text-brandGold">.</span>
+      </a>
+      <div class="h-6 w-[1px] bg-brandBorder hidden sm:block"></div>
+      <div class="text-xs uppercase tracking-widest text-brandTextMetadata font-courier hidden sm:block">
+        B2B Financial Modeler
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-8 items-center text-sm font-semibold tracking-wider uppercase">
+      <a href="home_portal_prototype.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200">Home Portal</a>
+      <a href="applications_gateway.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200">Applications Gateway</a>
+      <a href="#" class="text-brandGold border-b-2 border-brandGold pb-1">ROI Calculator</a>
+      <a href="egygrafx_prototype.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200 font-bold">Master Hub</a>
+    </nav>
+    <div class="flex items-center gap-6">
+      <div class="text-xs md:text-sm font-serifTitle italic text-brandGold tracking-wider">
+        YOUR APPLICATIONS &mdash; OUR SOLUTIONS
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CALCULATOR STAGE ================= -->
+  <main class="flex-grow container mx-auto px-4 md:px-8 py-8 space-y-8 max-w-7xl">
+    
+    <!-- Title Banner -->
+    <div class="bg-brandPanel border border-brandBorder rounded-3xl p-8 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6 min-h-[160px]">
+      <div class="absolute right-[-40px] top-[-40px] w-48 h-48 rounded-full bg-brandGold/5 border border-brandGold/10 pointer-events-none"></div>
+      <div class="flex-grow flex flex-col gap-3">
+        <span class="font-courier text-[10px] uppercase text-brandGold tracking-widest">B2B Financial Modeler</span>
+        <h1 class="font-serifTitle italic text-3xl text-brandTextPrimary font-bold">Industrial Cost & ROI Model Estimator</h1>
+        <p class="text-sm text-brandTextSecondary max-w-3xl leading-relaxed">
+          Configure direct print operations, substrate media weights, hourly overheads, and target wholesale prices. Formulated directly for Middle East printing plants to compute margins and capital payback timelines with 100% security.
+        </p>
+      </div>
+    </div>
+
+    <!-- ROI Calculator Split Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Left Side Inputs Form -->
+      <div class="lg:col-span-5 bg-brandPanel border border-brandBorder rounded-2xl p-6 space-y-6">
+        <div class="flex items-center gap-2 border-b border-brandBorder pb-3">
+          <i class="fa-solid fa-gears text-brandGold"></i>
+          <h3 class="font-outfit text-sm font-bold text-brandTextPrimary uppercase tracking-wider">Operational Variables</h3>
+        </div>
+
+        <!-- Currency Selector -->
+        <div class="flex flex-col gap-1.5">
+          <label class="font-courier text-[10px] uppercase text-brandGold font-bold">Local Currency</label>
+          <select id="roi-currency" onchange="runROICalculator()" class="w-full bg-brandBg border border-brandBorder rounded-lg px-3 py-2.5 text-brandTextPrimary text-xs focus:outline-none focus:border-brandGold font-medium">
+            <option value="EGP" selected>EGP (Egyptian Pound)</option>
+            <option value="USD">USD (United States Dollar)</option>
+            <option value="SAR">SAR (Saudi Riyal)</option>
+            <option value="AED">AED (UAE Dirham)</option>
+          </select>
+        </div>
+
+        <!-- Inputs Grid -->
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Machine CapEx ($)</label>
+            <input type="number" id="roi-capex" value="120000" oninput="runROICalculator()" class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Daily Output (sqm)</label>
+            <input type="number" id="roi-volume" value="2500" oninput="runROICalculator()" class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Substrate Media Cost</label>
+            <input type="number" id="roi-substrate-cost" value="45" oninput="runROICalculator()" class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Paper/Film Cost</label>
+            <input type="number" id="roi-film-cost" value="12" oninput="runROICalculator()" class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Ink Consumable / Liter</label>
+            <input type="number" id="roi-ink-cost" value="850" oninput="runROICalculator()" class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Ink Draw (ml/sqm)</label>
+            <input type="number" id="roi-ink-rate" value="12" oninput="runROICalculator()" class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Hourly Shop Overheads</label>
+            <input type="number" id="roi-shop-overhead" value="400" oninput="runROICalculator()" class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Average Speed (sqm/h)</label>
+            <input type="number" id="roi-speed" value="350" oninput="runROICalculator()" class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-semibold">
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5 border-t border-brandBorder/60 pt-4">
+          <label class="font-courier text-[10px] uppercase text-brandGold font-bold">Wholesale Selling Price / sqm *</label>
+          <input type="number" id="roi-selling-price" value="95" oninput="runROICalculator()" class="bg-brandBg border border-brandGold/40 rounded-lg px-4 py-3 text-sm text-brandGold font-bold focus:outline-none focus:border-brandGold">
+        </div>
+
+      </div>
+
+      <!-- Right Side Calculated Outputs Bento Grid -->
+      <div class="lg:col-span-7 flex flex-col gap-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Payback Period Card (Large Accent) -->
+          <div class="md:col-span-2 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between min-h-[140px] relative overflow-hidden bg-gradient-to-br from-brandGold/5 to-brandPanel">
+            <div class="absolute right-0 top-0 w-24 h-24 bg-brandGold/5 rounded-bl-full pointer-events-none"></div>
+            <div>
+              <span class="font-courier text-[10px] uppercase text-brandGold font-bold">Estimated Payback Period</span>
+              <div class="mt-2 text-4xl font-extrabold text-brandTextPrimary font-outfit" id="roi-output-payback">3.2 Months</div>
+            </div>
+            <p class="text-[10px] text-brandTextMetadata font-courier mt-2 uppercase tracking-wide">Target gate: payback below 12 months is exceptional</p>
+          </div>
+
+          <!-- Ink Cost/sqm -->
+          <div class="bg-brandPanel border border-brandBorder rounded-xl p-5 flex flex-col justify-between min-h-[100px]">
+            <span class="font-courier text-[9px] uppercase text-brandTextMetadata">Consumable Ink Cost / sqm</span>
+            <div class="text-xl font-bold text-brandTextPrimary font-courier mt-2" id="roi-output-ink-sqm">10.20 EGP</div>
+          </div>
+
+          <!-- Overhead Cost/sqm -->
+          <div class="bg-brandPanel border border-brandBorder rounded-xl p-5 flex flex-col justify-between min-h-[100px]">
+            <span class="font-courier text-[9px] uppercase text-brandTextMetadata">Factory Overhead / sqm</span>
+            <div class="text-xl font-bold text-brandTextPrimary font-courier mt-2" id="roi-output-overhead-sqm">1.14 EGP</div>
+          </div>
+
+          <!-- Total Cost/sqm -->
+          <div class="bg-brandPanel border border-brandBorder rounded-xl p-5 flex flex-col justify-between min-h-[100px]">
+            <span class="font-courier text-[9px] uppercase text-brandTextMetadata">Total direct cost / sqm</span>
+            <div class="text-xl font-bold text-brandTextPrimary font-courier mt-2" id="roi-output-total-sqm">68.34 EGP</div>
+          </div>
+
+          <!-- Gross Margin % -->
+          <div class="bg-brandPanel border border-brandBorder rounded-xl p-5 flex flex-col justify-between min-h-[100px]">
+            <span class="font-courier text-[9px] uppercase text-brandTextMetadata">Gross Margin ratio %</span>
+            <div class="text-xl font-bold text-brandGold font-outfit mt-2" id="roi-output-margin-pct">28.1%</div>
+          </div>
+
+          <!-- Monthly Profit Forecast (Large) -->
+          <div class="md:col-span-2 bg-brandPanel border border-brandBorder rounded-2xl p-6 flex flex-col justify-between min-h-[120px]">
+            <div>
+              <span class="font-courier text-[10px] uppercase text-brandGold font-bold">Monthly Gross Profit Forecast</span>
+              <div class="mt-2 text-3xl font-extrabold text-brandTextPrimary font-courier" id="roi-output-profit">1,732,900 EGP</div>
+            </div>
+            <p class="text-[9px] text-brandTextMetadata font-courier mt-2">Projection based on 26 days of continuous operations per month</p>
+          </div>
+
+        </div>
+
+        <!-- CapEx Payback Timeline Visual Progress Gauge -->
+        <div class="bg-brandPanel border border-brandBorder rounded-2xl p-6">
+          <span class="font-courier text-[10px] uppercase text-brandGold font-bold block mb-4">Capital investment payback gauge</span>
+          <div class="flex items-center gap-4">
+            <div class="flex-grow h-3 bg-brandBg border border-brandBorder rounded-full overflow-hidden relative">
+              <div class="h-full bg-gradient-to-r from-brandCrimson to-brandGold rounded-full transition-all duration-500" id="roi-timeline-bar" style="width: 82%;"></div>
+              <!-- 12-month standard capitalization marker line -->
+              <div class="absolute top-0 bottom-0 left-[75%] w-[1px] bg-brandTextPrimary pointer-events-none opacity-40"></div>
+            </div>
+            <span id="roi-gauge-badge" class="text-xs font-courier text-brandGold font-bold whitespace-nowrap">82% Perfect ROI</span>
+          </div>
+          <div class="text-[10px] text-brandTextMetadata font-courier leading-relaxed mt-3">
+            * The vertical white line marks a **12-month standard capitalization barrier**. A progress bar filling beyond the line indicates standard industrial payback.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="no-print border-t border-brandBorder bg-brandPanel py-6 px-12 text-center text-brandTextMetadata text-xs font-courier flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div>
+      &copy; 2026 EGYGRAFX. MULTI-AGENT DIGITAL MATCHMAKING SYSTEM.
+    </div>
+    <div class="flex items-center gap-4">
+      <span class="text-brandTextSecondary">Architect: Mitry Visuals</span>
+      <span class="h-3 w-[1px] bg-brandBorder"></span>
+      <span class="text-brandTextSecondary">Staging: MV-2026-085</span>
+    </div>
+  </footer>
+
+  <script>
+    // ================= ROI PAYBACK MATHEMATICAL ESTIMATOR =================
+    function runROICalculator() {
+      const currency = document.getElementById("roi-currency").value;
+      const capex = parseFloat(document.getElementById("roi-capex").value) || 0;
+      const dailyVolume = parseFloat(document.getElementById("roi-volume").value) || 0;
+      const substrateCost = parseFloat(document.getElementById("roi-substrate-cost").value) || 0;
+      const filmCost = parseFloat(document.getElementById("roi-film-cost").value) || 0;
+      const inkCostPerLiter = parseFloat(document.getElementById("roi-ink-cost").value) || 0;
+      const inkRatePerSqm = parseFloat(document.getElementById("roi-ink-rate").value) || 0; // in ml
+      const hourlyOverhead = parseFloat(document.getElementById("roi-shop-overhead").value) || 0;
+      const speedSqmH = parseFloat(document.getElementById("roi-speed").value) || 1;
+      const sellingPrice = parseFloat(document.getElementById("roi-selling-price").value) || 0;
+
+      // 1. Direct Ink cost per sqm
+      const inkCostPerSqm = (inkCostPerLiter / 1000) * inkRatePerSqm;
+      
+      // 2. Direct Overhead cost per sqm
+      const overheadPerSqm = hourlyOverhead / speedSqmH;
+
+      // 3. Total direct cost per sqm
+      const totalDirectCostPerSqm = substrateCost + filmCost + inkCostPerSqm + overheadPerSqm;
+
+      // 4. Gross Margin % & ratio
+      const grossMarginPerSqm = sellingPrice - totalDirectCostPerSqm;
+      const grossMarginPct = sellingPrice > 0 ? (grossMarginPerSqm / sellingPrice) * 100 : 0;
+
+      // 5. Monthly gross profit (26 working days)
+      const dailyProfit = dailyVolume * grossMarginPerSqm;
+      const monthlyProfit = dailyProfit * 26;
+
+      // 6. Payback period in months
+      // Convert capex to EGP if currency is EGP (assuming 47 EGP per USD for Egyptian market realistic exchange)
+      let exchangeRate = 1.0;
+      if (currency === "EGP") {
+        exchangeRate = 47.0;
+      } else if (currency === "SAR") {
+        exchangeRate = 3.75;
+      } else if (currency === "AED") {
+        exchangeRate = 3.67;
+      }
+      const capexInLocalCurrency = capex * exchangeRate;
+      const paybackMonths = monthlyProfit > 0 ? (capexInLocalCurrency / monthlyProfit) : 999;
+
+      // Update fields
+      document.getElementById("roi-output-ink-sqm").innerText = inkCostPerSqm.toFixed(2) + " " + currency;
+      document.getElementById("roi-output-overhead-sqm").innerText = overheadPerSqm.toFixed(2) + " " + currency;
+      document.getElementById("roi-output-total-sqm").innerText = totalDirectCostPerSqm.toFixed(2) + " " + currency;
+      document.getElementById("roi-output-margin-pct").innerText = grossMarginPct.toFixed(1) + "%";
+      document.getElementById("roi-output-profit").innerText = Math.round(monthlyProfit).toLocaleString() + " " + currency;
+
+      if (paybackMonths <= 0 || isNaN(paybackMonths) || !isFinite(paybackMonths) || paybackMonths > 60) {
+        document.getElementById("roi-output-payback").innerText = "No Payback (< 5 Years)";
+        document.getElementById("roi-timeline-bar").style.width = "0%";
+        document.getElementById("roi-gauge-badge").innerText = "0% ROI";
+      } else {
+        document.getElementById("roi-output-payback").innerText = paybackMonths.toFixed(1) + " Months";
+        
+        // Progress bar percentage: standard 12 months is at 75% point
+        let barPct = 0;
+        if (paybackMonths <= 12) {
+          barPct = 100 - (paybackMonths / 12) * 25; // 75% to 100%
+        } else {
+          barPct = Math.max(10, 75 - ((paybackMonths - 12) / 36) * 65); // drops to 10% for long payback
+        }
+        document.getElementById("roi-timeline-bar").style.width = barPct.toFixed(0) + "%";
+        document.getElementById("roi-gauge-badge").innerText = barPct.toFixed(0) + "% Perfect ROI";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      runROICalculator();
+    });
+  </script>
+</body>
+</html>

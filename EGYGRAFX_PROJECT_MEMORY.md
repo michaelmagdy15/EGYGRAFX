@@ -55,10 +55,10 @@ All assets in the workspace follow the **Mitry Visuals** high-contrast dark-mode
 ## 💼 3. Commercial Proposal Details (Staged to $1,450.00 USD)
 The commercial pricing and milestones have been strictly audited and adjusted to sum exactly to **$1,450.00 USD subtotal** ($1,457.25 total with a 0.5% Tax/VAT):
 
-### Staged Payment Milestones (25% / 30% / 35% / 10%)
-1.  **25% Milestone 1 Deposit & Design ($362.50):** Visual rebranding mockups, logo guidelines, and sitemap layout sign-off.
-2.  **30% Milestone 2 Staging Integration ($435.00):** Frontend catalog and 9 application hubs deployed to staging.
-3.  **35% Milestone 3 Backend & Database Lock ($507.50):** Firestore database collections, Clerk auth dashboard, and RFQ configurator deployed.
+### Staged Payment Milestones (60% / 20% / 10% / 10%)
+1.  **60% Milestone 1 Deposit & Design ($870.00):** Visual rebranding mockups, logo guidelines, and sitemap layout sign-off.
+2.  **20% Milestone 2 Staging Integration ($290.00):** Frontend catalog and 9 application hubs deployed to staging.
+3.  **10% Milestone 3 Backend & Database Lock ($145.00):** Firestore database collections, Clerk auth dashboard, and RFQ configurator deployed.
 4.  **10% Milestone 4 Production Handoff ($145.00):** Go-live domain configuration, automated SEO registration, and team training handoff.
 
 ### Commercial Line Items Table

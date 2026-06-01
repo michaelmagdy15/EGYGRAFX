@@ -50,7 +50,7 @@ The proposal is structured across 11 print-ready pages, resolving all pricing to
     *   Grand Total of **$1,457.25 USD** highlighted in beautiful 22pt `Times-Italic` gold.
 
 ### 6. Handover Milestones & Ongoing Costs (Page 6)
-*   Timeline milestones mapped to staged payments: **25% / 30% / 35% / 10%** ($362.50 / $435.00 / $507.50 / $145.00).
+*   Timeline milestones mapped to staged payments: **60% / 20% / 10% / 10%** ($870.00 / $290.00 / $145.00 / $145.00).
 *   Operation cost comparison showing a total of **$0 to $20/month** maximum hosting and service fees.
 
 ### 7. Visual Architecture Diagrams (Pages 7, 8, 9)

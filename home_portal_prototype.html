@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EGYGRAFX. | B2B Industrial Printing Intelligence</title>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 🎨 MITRY VISUALS STYLE SYSTEM SYSTEM TOKENS */
+    :root {
+      --bg-bleed: #0A0A0A;         /* Charcoal Black Page Bleed */
+      --panel-bg: #121212;         /* Container Panels */
+      --border-line: #262626;      /* Separator Grid Lines */
+      --gold-accent: #D3A572;      /* Bronze Gold Accent */
+      --text-primary: #F5FAFA;     /* Off-White Primary Text */
+      --text-secondary: #A8A8A8;   /* Muted Secondary Text */
+      --text-metadata: #6B6B6B;    /* Dark Monospace Metadata */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-bleed);
+      color: var(--text-secondary);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar Aesthetics */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-bleed);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-line);
+      border-radius: 4px;
+      border: 2px solid var(--bg-bleed);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-accent);
+    }
+
+    /* Typography Classes */
+    .serif-quote {
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      font-style: italic;
+      font-weight: normal;
+    }
+
+    .mono-tag {
+      font-family: 'Courier Prime', Courier, monospace;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--gold-accent);
+    }
+
+    /* 💎 STICKY HEADER NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-line);
+      transition: all 0.3s ease;
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Typography-Only Bold Geometric Sans-Serif Wordmark (NO SWIRL LOGO) */
+    .logo-wordmark {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .logo-wordmark span {
+      color: var(--gold-accent);
+      font-weight: 900;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--gold-accent);
+    }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold-accent);
+      color: var(--gold-accent);
+      font-family: 'Courier Prime', Courier, monospace;
+      padding: 10px 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-accent);
+      color: var(--bg-bleed);
+    }
+
+    /* 🌟 HERO GATEWAY SECTION */
+    .hero {
+      max-width: 900px;
+      margin: 80px auto 40px auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero-pretitle {
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: 2.8rem;
+      color: var(--text-primary);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+    }
+
+    .hero-tagline {
+      font-size: 1.8rem;
+      color: var(--gold-accent);
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+      word-spacing: 4px;
+    }
+
+    .hero-description {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* 📊 STATIC INSTALLATION STATS STRIP */
+    .stats-strip {
+      max-width: 1300px;
+      margin: 40px auto 60px auto;
+      padding: 0 30px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border-line);
+      border-radius: 12px;
+      background-color: var(--panel-bg);
+      overflow: hidden;
+    }
+
+    .stat-item {
+      padding: 30px;
+      text-align: center;
+      border-right: 1px solid var(--border-line);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: var(--gold-accent);
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-family: 'Courier Prime', Courier, monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-metadata);
+      margin-bottom: 8px;
+    }
+
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
+    /* 🔲 BENTO GRID SITEMAP SELECTOR */
+    .bento-section {
+      max-width: 1300px;
+      margin: 0 auto 80px auto;
+      padding: 0 30px;
+    }
+
+    .bento-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .bento-title::after {
+      content: '';
+      flex-grow: 1;
+      height: 1px;
+      background-color: var(--border-line);
+    }
+
+    /* Dynamic Asymmetric Bento Grid */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 220px;
+      gap: 16px;
+    }
+
+    /* Bento Item Core Styles */
+    .bento-item {
+      background-color: var(--panel-bg);
+      border: 1px solid var(--border-line);
+      border-radius: 12px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+
+    /* Ambient hover glow and gold border */
+    .bento-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-accent);
+      box-shadow: 0 10px 30px rgba(211, 165, 114, 0.08);
+    }
+
+    .bento-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border-line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-accent);
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .bento-item:hover .bento-icon {
+      background-color: rgba(211, 165, 114, 0.05);
+      border-color: var(--gold-accent);
+      transform: scale(1.05);
+    }
+
+    .bento-content {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .bento-label {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      letter-spacing: -0.5px;
+    }
+
+    .bento-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.4;
+      max-width: 90%;
+    }
+
+    .bento-arrow {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      color: var(--text-metadata);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .bento-item:hover .bento-arrow {
+      color: var(--gold-accent);
+      transform: translate(3px, -3px);
+    }
+
+    /* Asymmetric Size Mapping */
+    /* Item 1: Home Textile & Fast Fashion (Spans 8 wide, 2 tall) */
+    .bento-item.featured-wide {
+      grid-column: span 8;
+      grid-row: span 2;
+      background: radial-gradient(circle at 100% 0%, rgba(211, 165, 114, 0.05) 0%, var(--panel-bg) 60%);
+      border-left: 4px solid var(--gold-accent);
+    }
+
+    .bento-item.featured-wide .bento-icon {
+      width: 52px;
+      height: 52px;
+    }
+
+    .bento-item.featured-wide .bento-label {
+      font-size: 1.8rem;
+      font-weight: 800;
+      max-width: 600px;
+    }
+
+    .bento-item.featured-wide .bento-desc {
+      font-size: 0.95rem;
+      max-width: 500px;
+      margin-bottom: 15px;
+    }
+
+    /* Case Study Badge */
+    .case-badge {
+      align-self: flex-start;
+      margin-bottom: 15px;
+      background-color: rgba(211, 165, 114, 0.08);
+      border: 1px solid var(--gold-accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .case-badge-text {
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 0.7rem;
+      color: var(--gold-accent);
+      font-weight: bold;
+    }
+
+    /* Row 1/2 Right Stack (3 columns, Block 2 and 3) */
+    .bento-item.stack-item {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    /* Row 3 Grid Arrangement */
+    .bento-item.width-4 {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    .bento-item.width-8 {
+      grid-column: span 8;
+      grid-row: span 1;
+      background: linear-gradient(135deg, var(--panel-bg) 0%, rgba(255,255,255,0.01) 100%);
+    }
+
+    /* Row 4 Grid Arrangement */
+    .bento-item.width-3 {
+      grid-column: span 4;
+      grid-row: span 1;
+    }
+
+    /* Interactive Launcher Card */
+    .bento-item.interactive-trigger {
+      grid-column: span 4;
+      grid-row: span 1;
+      border: 1px dashed var(--gold-accent);
+      background-color: rgba(211, 165, 114, 0.02);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .bento-item.interactive-trigger:hover {
+      background-color: rgba(211, 165, 114, 0.05);
+    }
+
+    .bento-item.interactive-trigger .bento-icon {
+      margin: 0 auto 15px auto;
+    }
+
+    .bento-item.interactive-trigger .bento-label {
+      color: var(--gold-accent);
+      font-family: 'Courier Prime', Courier, monospace;
+      letter-spacing: 1px;
+      font-size: 1.1rem;
+    }
+
+    /* 💬 DYNAMIC SPLIT-PANE SOLUTION SIMULATOR OVERLAY */
+    .simulator-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(10, 10, 10, 0.95);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .simulator-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .sim-window {
+      width: 90%;
+      max-width: 1200px;
+      height: 85vh;
+      background-color: var(--panel-bg);
+      border: 1px solid var(--border-line);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.8);
+      overflow: hidden;
+      transform: scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .simulator-overlay.active .sim-window {
+      transform: scale(1);
+    }
+
+    /* Window Titlebar */
+    .sim-header {
+      background-color: #161616;
+      border-bottom: 1px solid var(--border-line);
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sim-title {
+      font-family: 'Courier Prime', Courier, monospace;
+      color: var(--gold-accent);
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sim-close {
+      background: transparent;
+      border: none;
+      color: var(--text-metadata);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .sim-close:hover {
+      color: var(--text-primary);
+    }
+
+    /* Window Split Pane Layout */
+    .sim-body {
+      display: flex;
+      flex-grow: 1;
+      overflow: hidden;
+    }
+
+    /* Left Side: Inputs and Custom Options */
+    .sim-left-pane {
+      width: 45%;
+      border-right: 1px solid var(--border-line);
+      padding: 40px;
+      overflow-y: auto;
+    }
+
+    /* Right Side: Visual Specs Matcher & Success Output */
+    .sim-right-pane {
+      width: 55%;
+      background-color: rgba(0,0,0,0.15);
+      padding: 40px;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .sim-section-title {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sim-section-title span {
+      color: var(--gold-accent);
+      font-family: 'Courier Prime', Courier, monospace;
+    }
+
+    /* Dynamic Selector Pills */
+    .config-group {
+      margin-bottom: 30px;
+    }
+
+    .config-label {
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-metadata);
+      margin-bottom: 12px;
+    }
+
+    .pill-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .pill-btn {
+      background-color: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-line);
+      color: var(--text-secondary);
+      padding: 12px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn:hover {
+      border-color: var(--gold-accent);
+      color: var(--text-primary);
+    }
+
+    .pill-btn.active {
+      background-color: rgba(211, 165, 114, 0.08);
+      border-color: var(--gold-accent);
+      color: var(--gold-accent);
+      font-weight: bold;
+    }
+
+    /* Dynamic Real-Time Lead Form */
+    .lead-form {
+      border-top: 1px solid var(--border-line);
+      padding-top: 30px;
+      margin-top: 30px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-label {
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 0.75rem;
+      color: var(--text-metadata);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .sim-input {
+      background-color: rgba(0,0,0,0.2);
+      border: 1px solid var(--border-line);
+      color: var(--text-primary);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s ease;
+    }
+
+    .sim-input:focus {
+      border-color: var(--gold-accent);
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: var(--gold-accent);
+      color: var(--bg-bleed);
+      border: 1px solid var(--gold-accent);
+      padding: 14px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: all 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: transparent;
+      color: var(--gold-accent);
+    }
+
+    /* Matchmaking Suite Details */
+    .suite-card {
+      background-color: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--border-line);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 25px;
+    }
+
+    .suite-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-line);
+    }
+
+    .suite-item:last-child {
+      border-bottom: none;
+    }
+
+    .suite-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    .suite-value {
+      font-size: 0.9rem;
+      color: var(--text-primary);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Live Consumables Dynamic Counter Widget */
+    .widget-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .widget-card {
+      background-color: rgba(0,0,0,0.3);
+      border: 1px solid var(--border-line);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .widget-num {
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 1.8rem;
+      color: var(--gold-accent);
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .widget-label {
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 0.75rem;
+      color: var(--text-metadata);
+      text-transform: uppercase;
+    }
+
+    /* Lead Success PDF Preview Output */
+    .success-pane {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--panel-bg);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .success-pane.active {
+      display: flex;
+    }
+
+    .success-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: rgba(211, 165, 114, 0.08);
+      border: 1px solid var(--gold-accent);
+      color: var(--gold-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .success-title {
+      font-size: 1.6rem;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .success-desc {
+      font-size: 0.95rem;
+      text-align: center;
+      color: var(--text-secondary);
+      max-width: 450px;
+      margin-bottom: 30px;
+    }
+
+    /* Branded PDF Output Presentation Card (Mitry Visuals Style) */
+    .pdf-preview-card {
+      width: 100%;
+      max-width: 380px;
+      background-color: var(--bg-bleed);
+      border: 1px solid var(--border-line);
+      border-left: 4px solid var(--gold-accent);
+      border-radius: 8px;
+      padding: 24px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .pdf-watermark {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      font-family: 'Courier Prime', Courier, monospace;
+      font-size: 0.65rem;
+      color: var(--gold-accent);
+      border: 1px solid var(--gold-accent);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .pdf-title {
+      font-family: 'Times New Roman', Times, Georgia, serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .pdf-subtitle {
+      font-size: 0.8rem;
+      color: var(--gold-accent);
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .pdf-detail-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--border-line);
+    }
+
+    .pdf-detail-row:last-child {
+      border-bottom: none;
+    }
+
+    .pdf-detail-label {
+      color: var(--text-metadata);
+      font-family: 'Courier Prime', Courier, monospace;
+    }
+
+    .pdf-detail-val {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .reset-btn {
+      background: transparent;
+      border: 1px solid var(--border-line);
+      color: var(--text-secondary);
+      font-family: 'Courier Prime', Courier, monospace;
+      padding: 8px 16px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: all 0.2s ease;
+    }
+
+    .reset-btn:hover {
+      border-color: var(--gold-accent);
+      color: var(--gold-accent);
+    }
+
+    /* 📱 RESPONSIVE MEDIA QUERIES */
+    @media (max-width: 1024px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(180px, auto);
+      }
+      .bento-item.featured-wide {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+      .bento-item.stack-item, .bento-item.width-4, .bento-item.width-8, .bento-item.width-3 {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+      .sim-window {
+        width: 95%;
+        height: 90vh;
+      }
+      .sim-body {
+        flex-direction: column;
+      }
+      .sim-left-pane, .sim-right-pane {
+        width: 100%;
+        height: 50%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      .hero-tagline {
+        font-size: 1.3rem;
+      }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      .bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .bento-item.featured-wide, .bento-item.stack-item, .bento-item.width-4, .bento-item.width-8, .bento-item.width-3 {
+        grid-column: span 1;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Header Bar -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo-wordmark">EGYGRAFX<span>.</span></a>
+      <ul class="nav-menu">
+        <li><a href="#" class="nav-link">Applications</a></li>
+        <li><a href="#" class="nav-link">Products</a></li>
+        <li><a href="#" class="nav-link">Consumables</a></li>
+        <li><a href="#" class="nav-link">Fleet Support</a></li>
+      </ul>
+      <button class="nav-cta" onclick="openSimulator()">Launch RFQ Portal</button>
+    </div>
+  </header>
+
+  <!-- Hero Headline System -->
+  <section class="hero">
+    <div class="hero-pretitle">
+      <span class="mono-tag">MV-2026-085 Enterprise Architecture</span>
+    </div>
+    <h1 class="hero-title">Industrial Large-Format Solutions</h1>
+    <div class="hero-tagline serif-quote">YOUR APPLICATIONS &mdash; OUR SOLUTIONS</div>
+    <p class="hero-description">Select your digital production sector below. Access fully integrated hardware suites, certified chemical inks, and dynamic calender lines configured dynamically.</p>
+  </section>
+
+  <!-- Key Metrics counters (3,500+ fleet installations) -->
+  <section class="stats-strip">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">3,500+</div>
+        <div class="stat-label">Installed Fleet</div>
+        <div class="stat-desc">Industrial printers active across major factories in Egypt.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Years Experience</div>
+        <div class="stat-desc">Providing high-performance print technology integration.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">SLA Support</div>
+        <div class="stat-desc">OEM-certified response, live parts stock, & profile desks.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Production Sectors</div>
+        <div class="stat-desc">Tailored substrate matching across distinct industries.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Asymmetric Bento Grid Sitemap Selector (9 Gateways) -->
+  <section class="bento-section">
+    <div class="bento-title">
+      <span>01</span> SELECT YOUR PRODUCTION SECTOR
+    </div>
+    
+    <div class="bento-grid">
+      
+      <!-- 1. Home Textile & Fast Fashion (Spans 8 wide, 2 tall - Featured Case Study) -->
+      <div class="bento-item featured-wide" onclick="openSimulator()">
+        <div class="bento-arrow">&#8599;</div>
+        <div>
+          <div class="case-badge">
+            <span class="case-badge-text">Interactive Showcase (Click to Open)</span>
+          </div>
+          <div class="bento-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">Home Textile & Fast Fashion</div>
+          <div class="bento-desc">High-speed polyester sublimation lines, certified inks, and synchronized heat transfer calenders matched for high-volume fabric production. Fits Nour's journey specs.</div>
+        </div>
+      </div>
+
+      <!-- 2. T-Shirts & Piece Printing (Stack Item 1, Column 4, Row 1) -->
+      <a href="#" class="bento-item stack-item">
+        <div class="bento-arrow">&#8599;</div>
+        <div class="bento-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a2 2 0 0 0 .99 1.45L7 12v7a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-7l3.15-1.39a2 2 0 0 0 .99-1.45l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">T-Shirts & Piece Printing</div>
+          <div class="bento-desc">Direct-to-Garment (DTG) and Direct-to-Film (DTF) transfer suites.</div>
+        </div>
+      </a>
+
+      <!-- 3. Carpet, Mats & Rugs (Stack Item 2, Column 4, Row 2) -->
+      <a href="#" class="bento-item stack-item">
+        <div class="bento-arrow">&#8599;</div>
+        <div class="bento-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="15" y1="3" x2="15" y2="21"></line><line x1="3" y1="9" x2="21" y2="9"></line><line x1="3" y1="15" x2="21" y2="15"></line></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">Carpet, Mats & Rugs</div>
+          <div class="bento-desc">Extra-wide dye sublimation and direct dispersion printing lines for dense substrates.</div>
+        </div>
+      </a>
+
+      <!-- 4. Hi-Tech Industrial CAD/CAM (Row 3, Col 1-4) -->
+      <a href="#" class="bento-item width-4">
+        <div class="bento-arrow">&#8599;</div>
+        <div class="bento-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2v4M12 18v4M4 12H2M22 12h-4"></path></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">Hi-Tech CAD/CAM</div>
+          <div class="bento-desc">GBOS high-precision laser marking and fabric nesting oscillating knife cutters.</div>
+        </div>
+      </a>
+
+      <!-- 6. Wall Covering & Home Décor (Row 3, Col 5-12, Spans 8 cols) -->
+      <a href="#" class="bento-item width-8">
+        <div class="bento-arrow">&#8599;</div>
+        <div class="bento-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">Wall Covering & Home Décor</div>
+          <div class="bento-desc">Textured heavy wallpaper media and eco-friendly latex printing suites. Design custom high-fidelity architectural accent walling and premium interior panels with dynamic texture-mapping.</div>
+        </div>
+      </a>
+
+      <!-- 5. Signage & Display (Row 4, Col 1-4) -->
+      <a href="#" class="bento-item width-3">
+        <div class="bento-arrow">&#8599;</div>
+        <div class="bento-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><rect x="5" y="5" width="14" height="14" rx="1" ry="1"></rect></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">Signage & Display</div>
+          <div class="bento-desc">Exhibition graphics, lightbox panels, odorless latex, and high-adhesion UV flats.</div>
+        </div>
+      </a>
+
+      <!-- 7. Outdoor Advertising (Row 4, Col 5-8) -->
+      <a href="#" class="bento-item width-3">
+        <div class="bento-arrow">&#8599;</div>
+        <div class="bento-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 22 22 22"></polygon></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">Outdoor Advertising</div>
+          <div class="bento-desc">Heavy-duty solvent printers and super-wide 5m UV roll systems for maximum durability.</div>
+        </div>
+      </a>
+
+      <!-- 8. Packaging & Labeling (Row 4, Col 9-12) -->
+      <a href="#" class="bento-item width-3">
+        <div class="bento-arrow">&#8599;</div>
+        <div class="bento-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">Packaging & Labeling</div>
+          <div class="bento-desc">Corrugated carton printers, fast label dies, and single-pass B2B printing systems.</div>
+        </div>
+      </a>
+
+      <!-- 9. Specialty & Promo (Row 5, Col 1-4) -->
+      <a href="#" class="bento-item width-3">
+        <div class="bento-arrow">&#8599;</div>
+        <div class="bento-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">Promotional Specialty</div>
+          <div class="bento-desc">Rotary 360° cylindrical printing, UV flats, and personalized corporate branding.</div>
+        </div>
+      </a>
+
+      <!-- 10. Live Simulator Launcher (Row 5, Col 5-12) -->
+      <div class="bento-item interactive-trigger" onclick="openSimulator()">
+        <div class="bento-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        </div>
+        <div class="bento-content">
+          <div class="bento-label">LAUNCH DYNAMIC B2B SIMULATOR</div>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto;">Simulate Nour's textile journey: Configure sublimation specs, check dynamic ink consumption, and generate a branded proposal PDF live.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- B2B SOLUTION SUITE SIMULATOR OVERLAY -->
+  <div class="simulator-overlay" id="simOverlay">
+    <div class="sim-window">
+      
+      <!-- Simulator Title Bar -->
+      <div class="sim-header">
+        <div class="sim-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect><rect x="5" y="5" width="14" height="14" rx="1" ry="1"></rect></svg>
+          [EGYGRAFX B2B RFQ FUNNEL PROTO] &mdash; NOUR'S TEXTILE STORY
+        </div>
+        <button class="sim-close" onclick="closeSimulator()">&times;</button>
+      </div>
+
+      <!-- Simulator Split Pane Container -->
+      <div class="sim-body">
+        
+        <!-- Left Side: Interactive Config & Lead Entry -->
+        <div class="sim-left-pane">
+          <div class="sim-section-title">
+            <span>01</span> DYNAMIC CONFIGURATOR
+          </div>
+          
+          <!-- Select Substrate -->
+          <div class="config-group">
+            <div class="config-label">Substrate Material</div>
+            <div class="pill-grid">
+              <button class="pill-btn active" onclick="setSubstrate(this, 'Polyester Fabric')">Polyester</button>
+              <button class="pill-btn" onclick="setSubstrate(this, 'Lycra Blend')">Lycra Blend</button>
+              <button class="pill-btn" onclick="setSubstrate(this, 'Non-Woven Fleece')">Textile Fleece</button>
+            </div>
+          </div>
+
+          <!-- Select Printing Width -->
+          <div class="config-group">
+            <div class="config-label">Required Width (Printers & Calenders)</div>
+            <div class="pill-grid">
+              <button class="pill-btn" onclick="setWidth(this, '1.6 meters')">1.6 Meters</button>
+              <button class="pill-btn active" onclick="setWidth(this, '1.9 meters')">1.9m (Poseidon)</button>
+              <button class="pill-btn" onclick="setWidth(this, '3.2 meters')">3.2m (Wide)</button>
+            </div>
+          </div>
+
+          <!-- Average Monthly Output volume -->
+          <div class="config-group">
+            <div class="config-label">Expected Monthly Volume</div>
+            <div class="pill-grid">
+              <button class="pill-btn active" onclick="setVolume(this, 10000)">10,000 sqm</button>
+              <button class="pill-btn" onclick="setVolume(this, 25000)">25,000 sqm</button>
+              <button class="pill-btn" onclick="setVolume(this, 50000)">50,000 sqm+</button>
+            </div>
+          </div>
+
+          <!-- Prequalified lead capture form (Prepopulated as Nour) -->
+          <div class="lead-form">
+            <div class="sim-section-title">
+              <span>02</span> SECURE LEAD DESK CAPTURE
+            </div>
+            <form id="leadSubmissionForm" onsubmit="submitSimulatedLead(event)">
+              <div class="form-row">
+                <div class="input-group">
+                  <div class="input-label">Buyer Name</div>
+                  <input type="text" class="sim-input" id="leadName" value="Nour Al-Mahalla" required>
+                </div>
+                <div class="input-group">
+                  <div class="input-label">Company</div>
+                  <input type="text" class="sim-input" id="leadCompany" value="Al-Mahalla Fast Fashion Ltd." required>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="input-group">
+                  <div class="input-label">Email Address</div>
+                  <input type="email" class="sim-input" id="leadEmail" value="nour.fashion@mahalla-ind.com" required>
+                </div>
+                <div class="input-group">
+                  <div class="input-label">Mobile Number</div>
+                  <input type="tel" class="sim-input" id="leadPhone" value="+20 102 345 6789" required>
+                </div>
+              </div>
+              <button type="submit" class="submit-btn">Compile Solution Suite & Request Quote</button>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Live Matched Suite Output & dynamic stats -->
+        <div class="sim-right-pane">
+          
+          <!-- Default View: The matched B2B Suite specifications -->
+          <div id="activeSuitePane">
+            <div class="sim-section-title">
+              <span>03</span> MATCHED HARDWARE & MEDIA SUITE
+            </div>
+            
+            <div class="suite-card">
+              <div class="suite-item">
+                <div class="suite-label">Primary Substrate</div>
+                <div class="suite-value" id="valSubstrate">Polyester Fabric</div>
+              </div>
+              <div class="suite-item">
+                <div class="suite-label">Matched Printer Engine</div>
+                <div class="suite-value" id="valPrinter">DGI Poseidon II (Kyocera Heads)</div>
+              </div>
+              <div class="suite-item">
+                <div class="suite-label">Sublimation Ink Formula</div>
+                <div class="suite-value" id="valInk">INKTEX Premium Sublimation Ink</div>
+              </div>
+              <div class="suite-item">
+                <div class="suite-label">Transfer Calender Sync</div>
+                <div class="suite-value" id="valCalender">Monti Antonio 75 T (Oil Press)</div>
+              </div>
+              <div class="suite-item">
+                <div class="suite-label">Certified Substrate Media</div>
+                <div class="suite-value" id="valPaper">Egygrafx Coated Transfer Paper (57gsm)</div>
+              </div>
+            </div>
+
+            <div class="sim-section-title">
+              <span>04</span> DYNAMIC CONSUMABLES CALCULATOR
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 300; margin-bottom: 15px;">Dynamic calculations determined live via chemical spec ratios based on selected production output:</p>
+            
+            <div class="widget-grid">
+              <div class="widget-card">
+                <div class="widget-num" id="calcInk">120 L</div>
+                <div class="widget-label">Ink Required / Mo</div>
+              </div>
+              <div class="widget-card">
+                <div class="widget-num" id="calcPaper">11,000 sqm</div>
+                <div class="widget-label">Transfer Paper / Mo</div>
+              </div>
+              <div class="widget-card">
+                <div class="widget-num" id="calcSpeed">80 sqm/h</div>
+                <div class="widget-label">Active Print Speed</div>
+              </div>
+              <div class="widget-card">
+                <div class="widget-num">24 Hours</div>
+                <div class="widget-label">SLA Calibration</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Simulated Database Success Slate -->
+          <div class="success-pane" id="successPane">
+            <div class="success-icon">&#10003;</div>
+            <h3 class="success-title">Pre-Qualified B2B Lead Captured!</h3>
+            <p class="success-desc">Lead saved to secure Firestore dashboard (`/leads/`). Autogenerated branded proposal PDF generated matching Eng. Ashraf's custom rates.</p>
+            
+            <!-- Mitry Visuals Branded Proposal PDF cover mockup -->
+            <div class="pdf-preview-card">
+              <div class="pdf-watermark">PREVIEW DRAFT</div>
+              <div class="pdf-title">egygrafx.</div>
+              <div class="pdf-subtitle">Tailored B2B Printing Suite</div>
+              
+              <div class="pdf-detail-row">
+                <span class="pdf-detail-label">PROPOSAL REF:</span>
+                <span class="pdf-detail-val">MV-2026-085D</span>
+              </div>
+              <div class="pdf-detail-row">
+                <span class="pdf-detail-label">PREPARED FOR:</span>
+                <span class="pdf-detail-val" id="pdfClient">Nour Al-Mahalla</span>
+              </div>
+              <div class="pdf-detail-row">
+                <span class="pdf-detail-label">CLIENT COMPANY:</span>
+                <span class="pdf-detail-val" id="pdfCompany">Al-Mahalla Fast Fashion Ltd.</span>
+              </div>
+              <div class="pdf-detail-row">
+                <span class="pdf-detail-label">MATCHED HARDWARE:</span>
+                <span class="pdf-detail-val" id="pdfHardware">DGI Poseidon II + Monti Antonio</span>
+              </div>
+              <div class="pdf-detail-row">
+                <span class="pdf-detail-label">EST. SUITE COST:</span>
+                <span class="pdf-detail-val" style="color: var(--gold-accent); font-weight: bold;">$1,450.00 USD (Staged)</span>
+              </div>
+            </div>
+
+            <button class="reset-btn" onclick="resetSimulatorForm()">Configure Another Suite</button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ⚙️ VANILLA JAVASCRIPT PROTO OPERATIONS -->
+  <script>
+    // Simulator Interactive Parameters
+    let selectedSubstrate = 'Polyester Fabric';
+    let selectedWidth = '1.9 meters';
+    let selectedVolume = 10000;
+
+    function openSimulator() {
+      document.getElementById('simOverlay').classList.add('active');
+    }
+
+    function closeSimulator() {
+      document.getElementById('simOverlay').classList.remove('active');
+    }
+
+    function setSubstrate(element, val) {
+      // Toggle button states
+      const parent = element.parentElement;
+      parent.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
+      
+      selectedSubstrate = val;
+      document.getElementById('valSubstrate').innerText = val;
+    }
+
+    function setWidth(element, val) {
+      const parent = element.parentElement;
+      parent.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
+      
+      selectedWidth = val;
+      
+      // Dynamic hardware mapping rules
+      let printer = 'DGI Poseidon II (Kyocera Heads)';
+      let calender = 'Monti Antonio 75 T (Oil Press)';
+      let paper = 'Egygrafx Coated Transfer Paper (57gsm)';
+
+      if (val === '1.6 meters') {
+        printer = 'DGI Poseidon I (Epson I3200)';
+        calender = 'Monti Antonio 72 Calender';
+        paper = 'Egygrafx Thin Transfer Paper (45gsm)';
+      } else if (val === '3.2 meters') {
+        printer = 'DGI Hercules 3200 (Industrial)';
+        calender = 'Monti Antonio 96 Wide-Belt';
+        paper = 'Egygrafx Heavy Duty Substrate (70gsm)';
+      }
+
+      document.getElementById('valPrinter').innerText = printer;
+      document.getElementById('valCalender').innerText = calender;
+      document.getElementById('valPaper').innerText = paper;
+    }
+
+    function setVolume(element, volume) {
+      const parent = element.parentElement;
+      parent.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
+      
+      selectedVolume = volume;
+      
+      // Dynamic consumables calculations
+      let inkUsage = '120 L';
+      let paperUsage = '11,000 sqm';
+      let speed = '80 sqm/h';
+
+      if (volume === 25000) {
+        inkUsage = '300 L';
+        paperUsage = '27,500 sqm';
+        speed = '120 sqm/h';
+      } else if (volume === 50000) {
+        inkUsage = '600 L';
+        paperUsage = '55,000 sqm';
+        speed = '240 sqm/h (Multi-Printers)';
+      }
+
+      document.getElementById('calcInk').innerText = inkUsage;
+      document.getElementById('calcPaper').innerText = paperUsage;
+      document.getElementById('calcSpeed').innerText = speed;
+    }
+
+    function submitSimulatedLead(event) {
+      event.preventDefault();
+      
+      // Map user details to the PDF preview card
+      const name = document.getElementById('leadName').value;
+      const company = document.getElementById('leadCompany').value;
+      const printer = document.getElementById('valPrinter').innerText;
+      
+      document.getElementById('pdfClient').innerText = name;
+      document.getElementById('pdfCompany').innerText = company;
+      document.getElementById('pdfHardware').innerText = printer;
+
+      // Toggle Pane view
+      document.getElementById('successPane').classList.add('active');
+    }
+
+    function resetSimulatorForm() {
+      document.getElementById('successPane').classList.remove('active');
+      document.getElementById('leadSubmissionForm').reset();
+    }
+  </script>
+
+</body>
+</html>

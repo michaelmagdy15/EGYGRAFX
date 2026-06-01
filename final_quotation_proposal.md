@@ -96,11 +96,11 @@ To deliver this platform at the highest standard, the project is broken down int
 
 To support safe development and clear, verified handovers, the project is divided into four progress steps:
 
-*   **25% Milestone 1: Deposit & Design System ($362.50)**  
+*   **60% Milestone 1: Deposit & Design System ($870.00)**  
     *   *Deliverables:* Complete visual rebranding mockups, logo guidelines, and sitemap layout sign-off.
-*   **30% Milestone 2: Staging Integration ($435.00)**  
+*   **20% Milestone 2: Staging Integration ($290.00)**  
     *   *Deliverables:* Development and staging deployment of the frontend catalog and 9 application hubs.
-*   **35% Milestone 3: Backend & Database Lock ($507.50)**  
+*   **10% Milestone 3: Backend & Database Lock ($145.00)**  
     *   *Deliverables:* Firestore database configuration, secure Clerk administrative panel, and RFQ configurator.
 *   **10% Milestone 4: Production Handoff ($145.00)**  
     *   *Deliverables:* Go-live domain configuration, automated SEO registration, and team training handoff.

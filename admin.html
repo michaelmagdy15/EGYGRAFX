@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EGYGRAFX. | Secured Headless CMS Admin Console</title>
+  
+  <!-- Premium Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandBg: '#0A0A0A',
+            brandPanel: '#121212',
+            brandBorder: '#262626',
+            brandGold: '#D3A572',
+            brandGoldHover: '#C29461',
+            brandTextPrimary: '#F5FAFA',
+            brandTextSecondary: '#A8A8A8',
+            brandTextMetadata: '#6B6B6B',
+            brandCrimson: '#bf243c',
+            brandCrimsonHover: '#a31b2f',
+          },
+          fontFamily: {
+            outfit: ['Outfit', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+            courier: ['Courier Prime', 'Courier', 'monospace'],
+            serifTitle: ['Playfair Display', 'Georgia', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    body {
+      background-color: #0A0A0A;
+      color: #A8A8A8;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262626;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D3A572;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-brandGold selection:text-brandBg antialiased">
+
+  <!-- ================= TOP HEADER BRANDING ================= -->
+  <header class="no-print border-b border-brandBorder bg-brandPanel/80 backdrop-blur-md sticky top-0 z-50 px-6 py-4 md:px-12 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="flex items-center gap-3">
+      <a href="home_portal_prototype.html" class="text-3xl font-extrabold tracking-[0.25em] text-brandTextPrimary uppercase select-none font-outfit">
+        EGYGRAFX<span class="text-brandGold">.</span>
+      </a>
+      <div class="h-6 w-[1px] bg-brandBorder hidden sm:block"></div>
+      <div class="text-xs uppercase tracking-widest text-brandTextMetadata font-courier hidden sm:block">
+        CMS & CRM Desk
+      </div>
+    </div>
+    <nav class="hidden md:flex gap-8 items-center text-sm font-semibold tracking-wider uppercase">
+      <a href="home_portal_prototype.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200">Home Portal</a>
+      <a href="applications_gateway.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200">Applications Gateway</a>
+      <a href="margin_calculator.html" class="text-brandTextSecondary hover:text-brandGold transition duration-200">ROI Calculator</a>
+      <a href="#" class="text-brandGold border-b-2 border-brandGold pb-1 font-bold">Admin CMS</a>
+    </nav>
+    <div class="flex items-center gap-6">
+      <div class="text-xs md:text-sm font-serifTitle italic text-brandGold tracking-wider">
+        YOUR APPLICATIONS &mdash; OUR SOLUTIONS
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CMS ADMIN STAGE ================= -->
+  <main class="flex-grow container mx-auto px-4 md:px-8 py-8 space-y-8 max-w-7xl">
+    
+    <!-- Passcode verification check wall (Clerk Simulator) -->
+    <section id="admin-auth-panel" class="max-w-md mx-auto bg-brandPanel border border-brandBorder rounded-3xl p-8 my-12 shadow-2xl space-y-6 text-center">
+      <div class="w-16 h-16 rounded-full bg-brandGold/5 border border-brandGold/20 flex items-center justify-center text-brandGold text-2xl mx-auto animate-pulse">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div>
+        <h3 class="font-serifTitle italic text-2xl text-brandTextPrimary font-bold">Clerk Headless CMS Access</h3>
+        <p class="text-xs text-brandTextSecondary leading-relaxed mt-2">
+          This dashboard simulates EGYGRAFX NoSQL Firestore catalog specs editing and real-time pre-qualified leads tracking. Enter staff password below:
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-2 text-left">
+        <label class="font-courier text-[9px] uppercase text-brandTextMetadata">Staff Access Passcode</label>
+        <input type="password" id="admin-passcode-input" placeholder="Enter 'egygrafx2026' to bypass" class="bg-brandBg border border-brandBorder rounded-lg px-4 py-2.5 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold transition-all text-center">
+      </div>
+
+      <button onclick="verifyAdminPasscode()" class="w-full bg-brandGold text-brandBg hover:bg-brandGoldHover py-3.5 rounded-xl font-outfit font-bold text-xs uppercase tracking-wider transition-all duration-300">
+        Unlock Secure CMS Session
+      </button>
+    </section>
+
+    <!-- Actual Logged-In Admin Panel Content -->
+    <section id="admin-dashboard-panel" class="hidden space-y-8">
+      
+      <!-- Admin Header Stats Strip -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-brandPanel border border-brandBorder rounded-xl p-4">
+          <span class="font-courier text-[9px] text-brandTextMetadata uppercase">Total B2B Leads</span>
+          <div class="text-2xl font-bold font-courier text-brandTextPrimary mt-1">1,284</div>
+        </div>
+        <div class="bg-brandPanel border border-brandBorder rounded-xl p-4">
+          <span class="font-courier text-[9px] text-brandTextMetadata uppercase">Pre-qualified RFQs</span>
+          <div class="text-2xl font-bold font-courier text-brandTextPrimary mt-1">412</div>
+        </div>
+        <div class="bg-brandPanel border border-brandBorder rounded-xl p-4">
+          <span class="font-courier text-[9px] text-brandTextMetadata uppercase">Google SEO Indexed</span>
+          <div class="text-2xl font-bold font-courier text-brandTextPrimary mt-1">98.4%</div>
+        </div>
+        <div class="bg-brandPanel border border-brandBorder rounded-xl p-4">
+          <span class="font-courier text-[9px] text-brandGold uppercase font-bold">Cloud Serverless Fee</span>
+          <div class="text-2xl font-extrabold font-courier text-brandGold mt-1">$0.00 / mo</div>
+        </div>
+      </div>
+
+      <!-- CRM Leads Stream Desk and CMS Spec Sheet Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Column: Active Firestore Leads Stream Table -->
+        <div class="lg:col-span-7 bg-brandPanel border border-brandBorder rounded-2xl overflow-hidden">
+          <div class="p-6 border-b border-brandBorder bg-brandBg/20 flex justify-between items-center">
+            <div>
+              <h3 class="font-outfit text-sm font-bold text-brandTextPrimary uppercase tracking-wider">Live Leads Stream</h3>
+              <span class="text-[9px] text-brandTextMetadata font-courier">Firestore Collection: /leads</span>
+            </div>
+            <button onclick="refreshMockLeads()" class="px-2.5 py-1 bg-brandBg border border-brandBorder hover:border-brandGold hover:text-brandGold transition rounded text-[10px] font-courier">
+              Refresh Collection
+            </button>
+          </div>
+
+          <div class="overflow-x-auto text-xs">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-brandBg/30 font-courier text-[10px] text-brandGold border-b border-brandBorder uppercase">
+                  <th class="p-4">Lead Factory</th>
+                  <th class="p-4">Target Sector</th>
+                  <th class="p-4">Custom Setup</th>
+                  <th class="p-4 text-right">Document Status</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-brandBorder/40 font-outfit" id="admin-leads-table-body">
+                <!-- Injected dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right Column: Firestore Spec Sheet Editor -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <div class="bg-brandPanel border border-brandBorder rounded-2xl p-6 relative">
+            
+            <!-- Processing Firestore Sync Loader overlay -->
+            <div id="admin-sync-overlay" class="absolute inset-0 bg-brandPanel/95 backdrop-blur-sm z-50 rounded-2xl hidden flex-col items-center justify-center space-y-3">
+              <div class="w-8 h-8 rounded-full border-2 border-brandGold border-t-transparent animate-spin"></div>
+              <div class="font-courier text-[10px] text-brandGold font-bold uppercase tracking-widest">PUSHING CHANGES TO FIRESTORE...</div>
+              <span class="text-[9px] text-brandTextMetadata font-courier">Incremental Static Revalidation triggered (60s cache window)</span>
+            </div>
+
+            <div class="flex justify-between items-center border-b border-brandBorder pb-3 mb-5">
+              <div>
+                <h3 class="font-outfit text-sm font-bold text-brandTextPrimary uppercase tracking-wider">Fleet Spec Editor</h3>
+                <span class="text-[9px] text-brandTextMetadata font-courier">Firestore Collection: /equipmentFleet</span>
+              </div>
+              <span class="text-[9px] font-courier text-emerald-500 font-bold px-2 py-0.5 bg-emerald-500/10 border border-emerald-500/20 rounded">FULL WRITE</span>
+            </div>
+
+            <!-- Printer Selector -->
+            <div class="flex flex-col gap-1.5 mb-4">
+              <label class="font-courier text-[9px] uppercase text-brandGold font-bold">Select Active Machine to Edit</label>
+              <select id="admin-printer-selector" onchange="onAdminPrinterSelect()" class="w-full bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-brandTextPrimary text-xs focus:outline-none focus:border-brandGold font-semibold">
+                <option value="dgi-poseidon-2">DGI Poseidon II</option>
+                <option value="novares-roma-8">Novares ROMA 8</option>
+                <option value="polyprint-filmjet">PolyPrint FILMJET</option>
+                <option value="oric-cylindrical-uv">ORIC Rotary 360</option>
+              </select>
+            </div>
+
+            <!-- Inputs form for catalog updates -->
+            <form onsubmit="saveAdminSpecChanges(event)" class="space-y-4">
+              
+              <div class="flex flex-col gap-1.5">
+                <label class="font-courier text-[9px] uppercase text-brandTextMetadata">Firestore Doc ID</label>
+                <input type="text" id="admin-spec-id" readonly class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextMetadata cursor-not-allowed font-semibold">
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Brand</label>
+                  <input type="text" id="admin-spec-brand" required class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Model</label>
+                  <input type="text" id="admin-spec-model" required class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Max Width</label>
+                  <input type="text" id="admin-spec-width" required class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Max Resolution</label>
+                  <input type="text" id="admin-spec-resolution" required class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Max Speed (sqm/h)</label>
+                  <input type="number" id="admin-spec-speed" required class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-courier text-[9px] uppercase text-brandTextSecondary">Base Price (USD)</label>
+                  <input type="number" id="admin-spec-price" required class="bg-brandBg border border-brandBorder rounded-lg px-3 py-2 text-xs text-brandTextPrimary focus:outline-none focus:border-brandGold font-medium">
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-brandBorder flex justify-end">
+                <button type="submit" class="w-full bg-brandGold text-brandBg hover:bg-brandGoldHover py-3 rounded-lg font-outfit font-bold text-xs uppercase tracking-wider transition-all duration-300">
+                  Push spec changes to Firestore
+                </button>
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- Dynamic SEO Programmatic Edge-CDN Search Result Preview Widget -->
+          <div class="bg-brandPanel border border-brandBorder rounded-2xl p-6">
+            <div class="flex justify-between items-center border-b border-brandBorder pb-2.5 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                <h4 class="font-outfit text-xs font-bold text-brandTextPrimary uppercase tracking-wider">Dynamic Search Engine Preview</h4>
+              </div>
+              <span class="text-[9px] text-brandTextMetadata font-courier">ISR rendering</span>
+            </div>
+
+            <!-- Google Search Snippet mock -->
+            <div class="bg-brandBg border border-brandBorder rounded-xl p-5 space-y-1.5">
+              <div class="text-[10px] text-brandTextMetadata font-mono leading-none">https://egygrafx.com &gt; products &gt; <span id="seo-slug-tag" class="text-brandTextSecondary">dgi-poseidon-ii</span></div>
+              <div class="text-sm font-semibold text-sky-400 hover:underline cursor-pointer leading-tight" id="seo-title-tag">DGI Poseidon II Industrial Printing Suite | EGYGRAFX.</div>
+              <div class="text-[11px] text-brandTextSecondary leading-relaxed" id="seo-desc-tag">
+                Configure DGI Poseidon II dye-sublimation suites with custom Kyocera piezo arrays up to 1,820 mm print width and draft outputs of 760 m²/h. Deployed in Egypt.
+              </div>
+            </div>
+            <p class="text-[9px] text-brandTextMetadata font-courier leading-relaxed mt-3">
+              * Real-time incremental static revalidation (ISR) pre-renders this SEO landing card instantly at edge nodes worldwide within a 60-second revalidation lock.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Scrolling Admin Monospace security log terminal -->
+      <div class="bg-[#08080A] border border-brandBorder rounded-3xl p-6 font-mono text-xs space-y-3">
+        <div class="flex justify-between items-center border-b border-brandBorder pb-2">
+          <div class="flex items-center gap-2 text-brandGold">
+            <i class="fa-solid fa-terminal"></i>
+            <span class="uppercase tracking-widest text-[9px] font-bold">Admin Audit Logs (IT/Admin Session)</span>
+          </div>
+          <span class="text-[9px] text-brandTextMetadata">Session Log</span>
+        </div>
+        <div class="max-h-[140px] overflow-y-auto space-y-1.5 text-brandTextSecondary" id="admin-security-terminal-console">
+          <div>&gt; Clerk Session authorized for Michael Mitry (User ID: clk_ashraf_2026).</div>
+          <div>&gt; Dynamic IP logging matches Helix-3 Edge network: 197.34.120.8.</div>
+          <div>&gt; Listening for Firestore leads sync notifications...</div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="no-print border-t border-brandBorder bg-brandPanel py-6 px-12 text-center text-brandTextMetadata text-xs font-courier flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div>
+      &copy; 2026 EGYGRAFX. MULTI-AGENT DIGITAL MATCHMAKING SYSTEM.
+    </div>
+    <div class="flex items-center gap-4">
+      <span class="text-brandTextSecondary">Architect: Mitry Visuals</span>
+      <span class="h-3 w-[1px] bg-brandBorder"></span>
+      <span class="text-brandTextSecondary">Staging: MV-2026-085</span>
+    </div>
+  </footer>
+
+  <script>
+    // ================= HEADLESS CMS SECURED DESK =================
+    function verifyAdminPasscode() {
+      const code = document.getElementById("admin-passcode-input").value;
+      if (code === "egygrafx2026") {
+        document.getElementById("admin-auth-panel").classList.add("hidden");
+        document.getElementById("admin-dashboard-panel").classList.remove("hidden");
+        
+        // Trigger list generation
+        refreshMockLeads();
+        loadAdminPrinter("dgi-poseidon-2");
+        addSecurityLog("Clerk authentication successful. IT/Admin role verified.");
+      } else {
+        alert("Invalid staff passcode. Access denied.");
+      }
+    }
+
+    const mockLeadsCollection = [
+      { id: "ld_001", company: "Nour Textiles Ltd", contact: "Nour", sector: "Home Textile & Fast Fashion", setup: "DGI Poseidon (8 heads, 1.82m)", date: "2026-06-15", budget: "$100,000 - $250,000", status: "Active Staging Sync" },
+      { id: "ld_002", company: "Al-Ahram Advertising", contact: "Eng. Hisham", sector: "Signage & Display", setup: "HP Latex R Series (12 heads, 2.5m)", date: "Immediate", budget: "$50,000 - $100,000", status: "Delivered via Resend" },
+      { id: "ld_003", company: "Kamel Decor Heliopolis", contact: "Sara Kamel", sector: "Wall Covering & Home Décor", setup: "HP Latex Production (8 heads, 1.63m)", date: "2026-07-01", budget: "$50,000 - $100,000", status: "Callback Requested" },
+      { id: "ld_004", company: "Mourad CAD Alexandria", contact: "Tarek Mourad", sector: "Hi-Tech Industrial CAD/CAM", setup: "GBOS Laser (2 heads, 2.5m)", date: "Immediate", budget: "Over $250,000", status: "Deal Closed / Completed" }
+    ];
+
+    function refreshMockLeads() {
+      const tableBody = document.getElementById("admin-leads-table-body");
+      tableBody.innerHTML = "";
+
+      mockLeadsCollection.forEach(lead => {
+        const row = document.createElement("tr");
+        row.className = "hover:bg-brandBg/40 transition cursor-pointer";
+        row.onclick = () => {
+          addSecurityLog(`Clicked lead profile: ${lead.company} (${lead.contact})`);
+          alert(`Lead Details:\nCompany: ${lead.company}\nContact: ${lead.contact}\nSector: ${lead.sector}\nSetup: ${lead.setup}\nBudget: ${lead.budget}\nStatus: ${lead.status}`);
+        };
+        row.innerHTML = `
+          <td class="p-4">
+            <div class="font-semibold text-brandTextPrimary">${lead.contact}</div>
+            <div class="text-[10px] text-brandTextMetadata font-courier">${lead.company}</div>
+          </td>
+          <td class="p-4">
+            <span class="bg-brandGold/10 text-brandGold text-[10px] px-2 py-0.5 rounded border border-brandGold/20 font-medium">${lead.sector}</span>
+          </td>
+          <td class="p-4">
+            <div class="text-brandTextPrimary font-medium">${lead.setup}</div>
+            <div class="text-[10px] text-brandTextMetadata">Target: ${lead.date}</div>
+          </td>
+          <td class="p-4 text-right">
+            <div class="flex items-center justify-end gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full ${lead.status.includes('Delivered') || lead.status.includes('Closed') ? 'bg-emerald-500' : 'bg-amber-500 animate-pulse'}"></span>
+              <span class="text-[11px] text-brandTextPrimary font-medium">${lead.status}</span>
+            </div>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+      addSecurityLog("Reloaded leads collection from Cloud Firestore.");
+    }
+
+    const mockPrintersCollection = [
+      { id: "dgi-poseidon-2", brand: "DGI", model: "Poseidon II", width: "1,820 mm", resolution: "600 x 1,800 dpi", speed: 450, price: 85000, desc: "Configure DGI Poseidon II dye-sublimation suites with custom Kyocera piezo arrays up to 1,820 mm print width and draft outputs of 760 m²/h." },
+      { id: "novares-roma-8", brand: "Novares", model: "ROMA 8", width: "1,800 mm", resolution: "600 x 1,200 dpi", speed: 400, price: 95000, desc: "Premium Novares ROMA 8 Italian chassis dye-sublimation print suites with Kyocera active degassing ink tanks." },
+      { id: "polyprint-filmjet", brand: "PolyPrint", model: "FILMJET", width: "600 mm", resolution: "720 x 1,440 dpi", speed: 35, price: 28000, desc: "Greek engineering PolyPrint FILMJET DTF print solutions matched with automated hot peel shakers." },
+      { id: "oric-cylindrical-uv", brand: "ORIC", model: "Rotary 360", width: "300 mm", resolution: "720 x 1,200 dpi", speed: 55, price: 15000, desc: "Cylindrical direct-to-object UV-LED rotary printing suites utilizing Ricoh high-resolution printheads." }
+    ];
+
+    function onAdminPrinterSelect() {
+      const id = document.getElementById("admin-printer-selector").value;
+      loadAdminPrinter(id);
+    }
+
+    function loadAdminPrinter(id) {
+      const printer = mockPrintersCollection.find(p => p.id === id);
+      if (!printer) return;
+
+      document.getElementById("admin-spec-id").value = printer.id;
+      document.getElementById("admin-spec-brand").value = printer.brand;
+      document.getElementById("admin-spec-model").value = printer.model;
+      document.getElementById("admin-spec-width").value = printer.width;
+      document.getElementById("admin-spec-resolution").value = printer.resolution;
+      document.getElementById("admin-spec-speed").value = printer.speed;
+      document.getElementById("admin-spec-price").value = printer.price;
+
+      updateProgrammaticSEOPreview(printer);
+    }
+
+    function updateProgrammaticSEOPreview(printer) {
+      document.getElementById("seo-slug-tag").innerText = printer.id;
+      document.getElementById("seo-title-tag").innerText = `${printer.brand} ${printer.model} Industrial Printing Suite | EGYGRAFX.`;
+      document.getElementById("seo-desc-tag").innerText = printer.desc;
+    }
+
+    function saveAdminSpecChanges(event) {
+      event.preventDefault();
+
+      const id = document.getElementById("admin-spec-id").value;
+      const brand = document.getElementById("admin-spec-brand").value;
+      const model = document.getElementById("admin-spec-model").value;
+      const width = document.getElementById("admin-spec-width").value;
+      const resolution = document.getElementById("admin-spec-resolution").value;
+      const speed = parseInt(document.getElementById("admin-spec-speed").value);
+      const price = parseInt(document.getElementById("admin-spec-price").value);
+
+      // Trigger overlay sync spinner
+      const overlay = document.getElementById("admin-sync-overlay");
+      overlay.classList.remove("hidden");
+      overlay.classList.add("flex");
+
+      setTimeout(() => {
+        overlay.classList.add("hidden");
+        overlay.classList.remove("flex");
+
+        // Update local object
+        const printer = mockPrintersCollection.find(p => p.id === id);
+        if (printer) {
+          printer.brand = brand;
+          printer.model = model;
+          printer.width = width;
+          printer.resolution = resolution;
+          printer.speed = speed;
+          printer.price = price;
+          printer.desc = `Configure ${brand} ${model} high-fidelity printing suites up to ${width} and draft outputs of ${speed} m²/h. Deployed in Egypt.`;
+
+          addSecurityLog(`Updated equipment specs in Firestore: /equipmentFleet/${id} (brand: ${brand}, model: ${model})`);
+          updateProgrammaticSEOPreview(printer);
+          
+          alert("Specs successfully saved to Firestore and static Edge CDN cache pre-rendered.");
+        }
+      }, 1500);
+    }
+
+    function addSecurityLog(message) {
+      const consoleLog = document.getElementById("admin-security-terminal-console");
+      const timestamp = new Date().toLocaleTimeString();
+      const div = document.createElement("div");
+      div.innerHTML = `&gt; [${timestamp}] ${message}`;
+      consoleLog.appendChild(div);
+      consoleLog.scrollTop = consoleLog.scrollHeight;
+    }
+  </script>
+</body>
+</html>

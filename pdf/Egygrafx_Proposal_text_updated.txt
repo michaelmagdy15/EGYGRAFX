@@ -216,19 +216,19 @@ PAYMENT
 AMOUNT
 MILESTONE
 DELIVERABLES
- 25%
- $362.50
+ 60%
+ $870.00
 Milestone 1 Deposit & Design
 Complete visual rebranding mockups, logo guidelines, and sitemap
 layout sign-off.
- 30%
- $435.00
+ 20%
+ $290.00
 Milestone 2 Staging
 Integration
 Frontend catalog and all 9 application hubs deployed to staging
 environment.
- 35%
- $507.50
+ 10%
+ $145.00
 Milestone 3 Backend & DB
 Lock
 Firestore database, Clerk admin panel, and RFQ configurator fully

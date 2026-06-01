@@ -12,7 +12,7 @@ CONTENT_WIDTH = MR - ML  # 499.275
 # Color Palette (Mitry Visuals Style)
 BG_COLOR = (0.04, 0.04, 0.04)        # #0A0A0A (Dark Charcoal)
 PANEL_BG = (0.07, 0.07, 0.07)        # #121212 (Dark Grey Panels)
-GOLD = (0.83, 0.65, 0.45)            # #D3A572 (Bronze Gold highlight)
+GOLD = (0.992, 0.420, 0.337)            # #FD6B56 (Logo Coral Orange highlight)
 LINE_COLOR = (0.15, 0.15, 0.15)      # #262626 (Separator Lines)
 TEXT_WHITE = (0.96, 0.98, 0.98)      # #F5FAFA (Primary Light Text)
 TEXT_GREY = (0.66, 0.66, 0.66)       # #A8A8A8 (Secondary Medium Text)
@@ -495,9 +495,9 @@ def build_pdf(output_path):
     c.drawString(ML + 265.0, curr_y - 11.0, "DELIVERABLES")
     
     milestones = [
-        ("25%", "$362.50", "Milestone 1 Deposit & Design", "Complete visual rebranding mockups, logo guidelines, sitemap layout sign-off."),
-        ("30%", "$435.00", "Milestone 2 Staging Integration", "Frontend catalog and all 9 application hubs deployed to staging."),
-        ("35%", "$507.50", "Milestone 3 Backend & DB Lock", "Firestore database collections, Clerk admin panel, RFQ configurator deployed."),
+        ("60%", "$870.00", "Milestone 1 Deposit & Design", "Complete visual rebranding mockups, logo guidelines, sitemap layout sign-off."),
+        ("20%", "$290.00", "Milestone 2 Staging Integration", "Frontend catalog and all 9 application hubs deployed to staging."),
+        ("10%", "$145.00", "Milestone 3 Backend & DB Lock", "Firestore database collections, Clerk admin panel, RFQ configurator deployed."),
         ("10%", "$145.00", "Milestone 4 Production Handoff", "Go-live domain config, automated SEO registration, team training handoff.")
     ]
     
