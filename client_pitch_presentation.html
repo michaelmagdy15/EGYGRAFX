@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egygrafx - Proposed B2B Web Platform Architecture & Commercial Quotation</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Mermaid JS for live diagram rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      securityLevel: 'loose',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+  </script>
+  <style>
+    /* Premium Visual Tokens */
+    :root {
+      --primary: hsl(354, 75%, 45%);
+      --primary-hover: hsl(354, 75%, 38%);
+      --accent: hsl(12, 92%, 60%);
+      --dark-slate: hsl(220, 13%, 18%);
+      --light-gray: hsl(220, 15%, 96%);
+      --border-color: rgba(44, 53, 64, 0.1);
+      --glass-bg: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Core Styles */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light-gray);
+      color: var(--dark-slate);
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Outfit', sans-serif;
+      margin-top: 0;
+      color: var(--dark-slate);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Floating Action Control Bar */
+    .control-bar {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      padding: 16px 24px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      margin-bottom: 40px;
+    }
+
+    .btn-print {
+      background-color: var(--primary);
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: background-color 0.2s, transform 0.1s;
+      box-shadow: 0 4px 12px rgba(191, 36, 60, 0.2);
+    }
+
+    .btn-print:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-print:active {
+      transform: scale(0.98);
+    }
+
+    /* Corporate Pitch Booklet Pages */
+    .page-sheet {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 50px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 30px rgba(44, 53, 64, 0.03);
+      border: 1px solid var(--border-color);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--light-gray);
+      padding-top: 20px;
+      margin-top: 40px;
+      font-size: 0.8rem;
+      color: rgba(44, 53, 64, 0.5);
+    }
+
+    /* Cover Page Specific Styles */
+    .cover-sheet {
+      background: radial-gradient(circle at 80% 20%, hsl(354, 60%, 15%), var(--dark-slate));
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 500px;
+    }
+
+    .cover-header {
+      border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 30px;
+    }
+
+    .cover-brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .cover-brand span {
+      color: var(--accent);
+    }
+
+    .cover-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 300;
+      max-width: 700px;
+    }
+
+    .cover-middle h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 15px;
+      line-height: 1.25;
+    }
+
+    .cover-middle p {
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 600px;
+      font-size: 1.05rem;
+    }
+
+    .cover-meta {
+      display: flex;
+      gap: 40px;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.6);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 16px 24px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Section Heading Styles */
+    .section-num {
+      background: rgba(191, 36, 60, 0.1);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-bottom: 2px solid var(--light-gray);
+      padding-bottom: 12px;
+    }
+
+    /* Diagram Section Box */
+    .diagram-container {
+      background-color: var(--light-gray);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 25px 0;
+      border: 1px dashed rgba(44, 53, 64, 0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: auto;
+    }
+
+    .mermaid {
+      width: 100%;
+      background: transparent !important;
+    }
+
+    /* Business Highlights list */
+    .highlight-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 25px 0 0 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .highlight-item {
+      background-color: var(--light-gray);
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 5px solid var(--primary);
+    }
+
+    .highlight-item strong {
+      display: block;
+      color: var(--dark-slate);
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .highlight-item p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: rgba(44, 53, 64, 0.8);
+    }
+
+    /* Color Swatch Matrix */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 25px 0;
+    }
+
+    .swatch-card {
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    }
+
+    .swatch-color {
+      height: 90px;
+    }
+
+    .swatch-info {
+      padding: 16px;
+    }
+
+    .swatch-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .swatch-hex {
+      font-size: 0.8rem;
+      color: rgba(44, 53, 64, 0.6);
+    }
+
+    /* Specs Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      background-color: var(--light-gray);
+    }
+
+    /* Logo Comparison Layout */
+    .logo-comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 35px 0;
+    }
+
+    .logo-comparison-card {
+      background-color: var(--light-gray);
+      border-radius: 16px;
+      padding: 30px;
+      border: 1px solid var(--border-color);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-comparison-card img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .logo-label {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 6px;
+    }
+
+    .logo-label.old {
+      background-color: #e2e8f0;
+      color: #475569;
+    }
+
+    .logo-label.new {
+      background-color: rgba(191, 36, 60, 0.1);
+      color: var(--primary);
+    }
+
+    .logo-desc {
+      font-size: 0.85rem;
+      color: rgba(44, 53, 64, 0.7);
+      margin-top: 15px;
+      text-align: left;
+      width: 100%;
+    }
+
+    .logo-desc ul {
+      margin: 6px 0 0 18px;
+      padding: 0;
+    }
+
+    /* Dynamic Pricing Cards */
+    .pricing-table {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .price-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .price-card.featured {
+      border: 2px solid var(--primary);
+      box-shadow: 0 8px 24px rgba(191, 36, 60, 0.08);
+    }
+
+    .price-card.featured::before {
+      content: 'RECOMMENDED SOLUTION';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary);
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      padding: 4px 16px;
+      border-radius: 20px;
+    }
+
+    .tier-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .tier-price {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .tier-features {
+      list-style-type: none;
+      padding: 0;
+      margin: 0 0 30px 0;
+      flex-grow: 1;
+    }
+
+    .tier-features li {
+      padding: 8px 0;
+      font-size: 0.9rem;
+      border-bottom: 1px solid rgba(44, 53, 64, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tier-features li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Print & Pagination Controls */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        color: #000000 !important;
+      }
+      
+      .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+
+      .control-bar {
+        display: none !important; /* Hide dynamic bar on print */
+      }
+
+      .page-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 20px 0 !important;
+        margin-bottom: 0 !important;
+        page-break-before: always !important;
+        break-before: page !important;
+        min-height: 100% !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .page-sheet:first-child {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+      }
+
+      .cover-sheet {
+        background: radial-gradient(circle at 80% 20%, hsl(354, 60%, 15%), var(--dark-slate)) !important;
+        color: #ffffff !important;
+        padding: 60px !important;
+      }
+
+      .cover-brand, .cover-brand span, .cover-middle h2, .cover-middle p, .cover-subtitle {
+        color: #ffffff !important;
+      }
+
+      .diagram-container {
+        border: 1px solid #777777 !important;
+        background-color: #ffffff !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .highlight-list {
+        grid-template-columns: 1fr !important;
+      }
+
+      .highlight-item {
+        border-left: 3px solid var(--primary) !important;
+        background-color: #ffffff !important;
+      }
+
+      .pricing-table {
+        grid-template-columns: repeat(3, 1fr) !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .price-card {
+        border: 1px solid #777777 !important;
+        background-color: #ffffff !important;
+      }
+
+      .logo-comparison-grid {
+        grid-template-columns: 1fr 1fr !important;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .logo-comparison-card {
+        border: 1px solid #777777 !important;
+        background-color: #ffffff !important;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- PDF Console Control Bar (Hidden on print) -->
+    <div class="control-bar">
+      <div>
+        <strong style="font-family: 'Outfit';">B2B Proposal Console</strong>
+        <div style="font-size: 0.75rem; color: rgba(44, 53, 64, 0.6);">Compiled: 5-Page Print-Optimized Presentation booklet.</div>
+      </div>
+      <button class="btn-print" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+        Download Proposal PDF (5 Pages)
+      </button>
+    </div>
+
+    <!-- PAGE 1: COVER PAGE -->
+    <div class="page-sheet cover-sheet">
+      <div class="cover-header">
+        <div class="cover-brand">egygrafx<span>.</span></div>
+        <div class="cover-subtitle">The Hub for Printing Intelligence</div>
+      </div>
+      
+      <div class="cover-middle">
+        <h2>Proposed B2B Web Platform<br>& Commercial Quotation</h2>
+        <p>A strategic transition from product listings to an interactive, application-driven user experience. Designed to capture hot B2B inquiries and simplify dynamic fleet updates.</p>
+      </div>
+
+      <div>
+        <div class="cover-meta">
+          <div><strong>Prepared For:</strong> Egygrafx Executive Leadership Team</div>
+          <div><strong>Prepared By:</strong> Senior Fullstack UX Architect</div>
+          <div><strong>Scope:</strong> Rebranding, Custom Headless CMS, & SEO Optimization</div>
+        </div>
+        <div class="page-footer" style="color: rgba(255,255,255,0.4); border-top: 1px solid rgba(255,255,255,0.1);">
+          <span>Egygrafx Proposal Brochure</span>
+          <span>Page 1 of 5</span>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- PAGE 2: USER EXPERIENCE & BUYER'S JOURNEY -->
+    <div class="page-sheet">
+      <span class="section-num">Page 2</span>
+      <h2 class="section-title">The B2B Buyer's Value Journey (UX Flow)</h2>
+      <p>Legacy systems overwhelm B2B buyers with thousands of disjointed spare parts. Our new approach centers on **"YOUR APPLICATIONS ↔ OUR SOLUTIONS"**. Visitors select their industry segment immediately upon arrival and are guided directly to custom matching setups.</p>
+      
+      <div class="diagram-container">
+        <pre class="mermaid">
+graph LR
+    classDef step fill:#fafafa,stroke:#2c3540,stroke-width:1px,color:#2c3540,rx:5px,ry:5px;
+    classDef primary fill:#bf243c,stroke:#fff,stroke-width:1px,color:#fff,font-weight:bold,rx:5px,ry:5px;
+    classDef accent fill:#ea580c,stroke:#fff,stroke-width:1px,color:#fff,font-weight:bold,rx:5px,ry:5px;
+
+    A[1. B2B Client arrives on Website] --> B{2. What is their Industry Sector?}
+    
+    B -->|Home Textile & Fast Fashion| C1[3. Dedicated Application Hub]
+    B -->|T-Shirts & Piece Printing| C2[3. Dedicated Application Hub]
+    B -->|Carpet, Mats & Rugs| C3[3. Dedicated Application Hub]
+    B -->|Hi-Tech Industrial CAD/CAM| C4[3. Dedicated Application Hub]
+    B -->|Signage & Display| C5[3. Dedicated Application Hub]
+    B -->|Wall Covering & Home Décor| C6[3. Dedicated Application Hub]
+    B -->|Outdoor & Street Furniture| C7[3. Dedicated Application Hub]
+    B -->|Packaging & Labeling| C8[3. Dedicated Application Hub]
+    B -->|Promotional & Personalization| C9[3. Dedicated Application Hub]
+
+    C1 & C2 & C3 & C4 & C5 & C6 & C7 & C8 & C9 --> D[4. View Best-Fit Machinery Solutions & Specs]
+    D --> E[5. Match Compatible Inks, Papers & Spares]
+    E --> F[6. Choose Options & Request Quote]
+    F --> G[7. Sales Team receives a pre-qualified HOT Lead]
+
+    class A,D,E step;
+    class B,F primary;
+    class C1,C2,C3,C4,C5,C6,C7,C8,C9,G accent;
+        </pre>
+      </div>
+
+      <div class="highlight-list">
+        <div class="highlight-item">
+          <strong>Instant Value Matching</strong>
+          <p>By routing the buyer by sector, we bypass industrial clutter and show only the hardware, inks, and papers relevant to their business.</p>
+        </div>
+        <div class="highlight-item">
+          <strong>Cross-Catalog Synergy</strong>
+          <p>Machinery details list and link compatible consumables (inks, transfer media, plotters) to capture high-value cross-orders.</p>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Egygrafx Proposal Brochure</span>
+        <span>Page 2 of 5</span>
+      </div>
+    </div>
+
+
+    <!-- PAGE 3: VISUAL REBRANDING & LOGO PITCH -->
+    <div class="page-sheet">
+      <span class="section-num">Page 3</span>
+      <h2 class="section-title">Visual Rebranding Synthesis (Legacy vs. Proposed)</h2>
+      <p>Applying the Xerox rebranding model, the new visual identity transitions from a cold, rigid industrial equipment merchant to an approachable, human-centered technology partner. We lower corporate friction through clean geometry, lowercase typography, and glowing HSL color tokens.</p>
+
+      <!-- Dynamic Logo Comparison -->
+      <style>
+        .logo-comparison-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 30px;
+          margin: 35px 0;
+        }
+        .logo-comparison-card {
+          background-color: var(--light-gray);
+          border-radius: 14px;
+          padding: 24px;
+          border: 1px solid var(--border-color);
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .logo-comparison-card img {
+          max-width: 100%;
+          height: auto;
+          object-fit: contain;
+          margin-bottom: 20px;
+        }
+        .logo-label {
+          font-family: 'Outfit', sans-serif;
+          font-weight: 600;
+          font-size: 1.1rem;
+          margin-bottom: 6px;
+          display: inline-block;
+          padding: 4px 12px;
+          border-radius: 6px;
+        }
+        .logo-label.old {
+          background-color: #e2e8f0;
+          color: #475569;
+        }
+        .logo-label.new {
+          background-color: rgba(191, 36, 60, 0.1);
+          color: var(--primary);
+        }
+        .logo-desc {
+          font-size: 0.85rem;
+          color: rgba(44, 53, 64, 0.7);
+          margin-top: 10px;
+          text-align: left;
+          width: 100%;
+        }
+        .logo-desc ul {
+          margin: 6px 0 0 16px;
+          padding: 0;
+        }
+        @media (max-width: 768px) {
+          .logo-comparison-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+      </style>
+      
+      <div class="logo-comparison-grid">
+        <div class="logo-comparison-card">
+          <div class="logo-label old">Legacy Identity (Current)</div>
+          <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; height: 120px; margin: 15px 0;">
+            <img src="old logo.png" alt="Legacy Egygrafx Logo" style="max-height: 80px;" />
+          </div>
+          <div class="logo-desc">
+            <strong>Key Visual Friction Points:</strong>
+            <ul>
+              <li>Sharp, rigid all-caps Serif typeface (creates emotional distance).</li>
+              <li>Literal CMYK offset-printing grid (limits modern digital-tech scope).</li>
+              <li>Traditional corporate look, difficult to scale on mobile screens.</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="logo-comparison-card" style="border: 2px solid var(--primary); background-color: #ffffff; box-shadow: 0 10px 25px rgba(191, 36, 60, 0.05);">
+          <div class="logo-label new">Proposed B2B Rebrand</div>
+          <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; height: 120px; margin: 15px 0;">
+            <img src="egygrafx_logo_rebrand.png" alt="Proposed Rebrand Logo" style="max-height: 110px; border-radius: 6px;" />
+          </div>
+          <div class="logo-desc">
+            <strong>Key Strategic Growth Benefits:</strong>
+            <ul>
+              <li>Friendly lowercase rounded geometric sans-serif (Outfit).</li>
+              <li>Overlapping curves representing roll-to-roll flow & intelligence.</li>
+              <li>High-contrast Deep Crimson & Digital Coral HSL color palette.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3>Core Color Tokens</h3>
+      <div class="swatch-grid">
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: hsl(354, 75%, 45%);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Deep Crimson</div>
+            <div class="swatch-hex">HSL(354, 75%, 45%)</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: hsl(12, 92%, 60%);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Digital Coral</div>
+            <div class="swatch-hex">HSL(12, 92%, 60%)</div>
+          </div>
+        </div>
+        <div class="swatch-card">
+          <div class="swatch-color" style="background-color: hsl(220, 13%, 18%);"></div>
+          <div class="swatch-info">
+            <div class="swatch-name">Charcoal Slate</div>
+            <div class="swatch-hex">HSL(220, 13%, 18%)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-footer">
+        <span>Egygrafx Proposal Brochure</span>
+        <span>Page 3 of 5</span>
+      </div>
+    </div>
+
+
+    <!-- PAGE 4: HEADLESS CMS & LEAD GENERATION (HOW IT WORKS) -->
+    <div class="page-sheet">
+      <span class="section-num">Page 4</span>
+      <h2 class="section-title">Dynamic CMS Control & B2B RFQ Funnel</h2>
+      <p>This flow explains how your team updates the inventory in one click, and how the interactive B2B funnel automatically converts passive web traffic into high-value sales prospects.</p>
+      
+      <h3>1. Automated Content Updates (Internal Control Flow)</h3>
+      <div class="diagram-container">
+        <pre class="mermaid">
+flowchart TD
+    classDef actor fill:#2c3540,stroke:#fff,stroke-width:1.5px,color:#fff,rx:8px;
+    classDef panel fill:#ea580c,stroke:#fff,stroke-width:1px,color:#fff,rx:5px;
+    classDef database fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#38bdf8,rx:5px;
+    classDef web fill:#bf243c,stroke:#fff,stroke-width:1px,color:#fff,rx:5px;
+
+    User[Egygrafx Admin] -->|Password Login| Dash[Custom Admin Dashboard]
+    Dash -->|Input Specs / Upload Brochure| Form{Add New Machine}
+    Form -->|Save Product Specs| DB[(Firestore NoSQL Cloud Database)]
+    DB -->|Instant Data Stream| WebApp[Live Web Application]
+    WebApp -->|Auto-Generate URL Slugs| Google[SEO Page Indexed Automatically]
+
+    class User actor;
+    class Dash,Form panel;
+    class DB database;
+    class WebApp,Google web;
+        </pre>
+      </div>
+
+      <h3>2. The Dynamic Lead Capture (RFQ Sales Funnel)</h3>
+      <div class="diagram-container">
+        <pre class="mermaid">
+flowchart LR
+    classDef client fill:#fafafa,stroke:#bf243c,stroke-width:2px,color:#bf243c,font-weight:bold,rx:5px;
+    classDef system fill:#2c3540,stroke:#fff,stroke-width:1.5px,color:#fff,rx:5px;
+    classDef sales fill:#ea580c,stroke:#fff,stroke-width:1.5px,color:#fff,rx:5px;
+
+    A[1. Buyer selects Width & Heads] --> B[2. Clicks Request Quote CTA]
+    B --> C{3. Live validation & capture}
+    C -->|Auto Trigger 1| D[4. Email sent with dynamic PDF brochure]
+    C -->|Auto Trigger 2| E[4. Hot Lead pushed to Sales Team]
+    E --> F[5. Closed B2B Deal]
+
+    class A,D client;
+    class B,C system;
+    class E,F sales;
+        </pre>
+      </div>
+
+      <div class="page-footer">
+        <span>Egygrafx Proposal Brochure</span>
+        <span>Page 4 of 5</span>
+      </div>
+    </div>
+
+
+    <!-- PAGE 5: COMMERCIAL PROPOSAL & QUOTATION -->
+    <div class="page-sheet">
+      <span class="section-num">Page 5</span>
+      <h2 class="section-title">Commercial Proposal & Delivery Milestones</h2>
+      <p>Building a robust platform with integrated database self-management, custom dynamic routing, and visual rebranding requires strategic execution. Below is a structured, modular commercial quotation map.</p>
+
+      <div class="pricing-table">
+        <div class="price-card">
+          <div class="tier-name">Tier 1: Core Design Engine</div>
+          <div class="tier-price">$670</div>
+          <ul class="tier-features">
+            <li>React & Outfit Visual Rebrand Styling</li>
+            <li>9 Interactive Application Gateways</li>
+            <li>Fully Responsive Mobile-First layouts</li>
+            <li>SEO-optimized semantic pages</li>
+            <li>Static B2B responsive contact forms</li>
+          </ul>
+        </div>
+        <div class="price-card featured">
+          <div class="tier-name">Tier 2: Headless CMS Suite</div>
+          <div class="tier-price">$1,450</div>
+          <ul class="tier-features">
+            <li><strong>Everything in Tier 1 included</strong></li>
+            <li>Cloud NoSQL Firebase Firestore database</li>
+            <li>Clerk Secure Administrative Dashboard</li>
+            <li>1-Click dynamic catalog updating</li>
+            <li>Self-managed installation stat counters</li>
+            <li>Background dynamic SEO route generators</li>
+          </ul>
+        </div>
+        <div class="price-card">
+          <div class="tier-name">Tier 3: Enterprise Fleet Hub</div>
+          <div class="tier-price">$2,800</div>
+          <ul class="tier-features">
+            <li><strong>Everything in Tier 2 included</strong></li>
+            <li>Dynamic custom RFQ configuration builder</li>
+            <li>Automated PDF brochure email triggers</li>
+            <li>Client support portal (ICC calibration tickets)</li>
+            <li>Multi-facet dynamic search & filtering</li>
+            <li>6 months post-launch technical SLA</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 30px; padding: 24px; background-color: var(--light-gray); border-radius: 12px; font-size: 0.85rem; color: rgba(44, 53, 64, 0.95); border: 1px solid var(--border-color);">
+        <strong style="display: block; font-family: 'Outfit'; font-size: 1rem; margin-bottom: 8px; color: var(--primary);">Delivery & Investment Milestones</strong>
+        To support development workflow and clear project handovers, the investment is divided into four milestone steps:
+        <ul style="margin: 10px 0 0 20px; padding: 0;">
+          <li><strong>25% Deposit & Design System:</strong> $362.50 (Branding wireframes, dynamic sitemap sign-off)</li>
+          <li><strong>30% Staging Integration:</strong> $435.00 (Staging deployment of the frontend catalog and 9 application hubs)</li>
+          <li><strong>35% Backend & Database Lock:</strong> $507.50 (Firestore DB, secure Clerk admin panel, RFQ configurator)</li>
+          <li><strong>10% Final Launch & Training:</strong> $145.00 (Production domain setup, SEO registration, operator handoff)</li>
+        </ul>
+      </div>
+
+
+      <div class="page-footer">
+        <span>Egygrafx Proposal Brochure</span>
+        <span>Page 5 of 5</span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

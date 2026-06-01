@@ -1,0 +1,379 @@
+--- PAGE 1 ---
+egygrafx
+Wide-Format Printing Technology
+B2B Platform Proposal
+& Commercial Quotation
+PREPARED FOR
+Eng. Ashraf — Executive Director, Egygrafx
+PREPARED BY
+Michael Mitry — Mitry Visuals
+DOCUMENT REF
+MV-2026-085
+ISSUED
+25 May 2026
+VALID UNTIL
+24 June 2026
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+michaelmitry13@gmail.com  ·  +20 100 068 0580
+
+--- PAGE 2 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.1
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+01
+Executive Summary & Brand Vision
+Egygrafx is a recognized market leader with over 30 years of experience, 3,500+ fleet installations, and partnerships
+with premier global brands including HP, Monti Antonio, and GBOS. This proposal shifts the platform from a traditional
+product listing directory toward a dynamic, customer-centric B2B lead generator:
+YOUR APPLICATIONS  ↔  OUR SOLUTIONS
+The B2B Sales Story: Nour's Journey
+To illustrate how this system drives business growth, consider Nour — a textile business owner expanding into fast
+fashion:
+ 01
+The Entry
+Nour lands on the new egygrafx.com — fast, premium, and highly professional.
+ 02
+Application Hub
+Greeted with: "What is your application?" — she clicks Home Textile & Fast Fashion.
+ 03
+Integrated Suite
+Instantly sees the DGI Poseidon II with matched INKTEX inks and transfer papers — a complete solution in one
+screen.
+ 04
+Lead Capture
+Selects her configuration → clicks Request a Quote. A branded PDF lands in her inbox; the sales desk gets a
+pre-qualified lead sheet instantly.
+ 05
+The Close
+Your team calls Nour with a tailored proposal — the deal is closed.
+
+--- PAGE 3 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.2
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+02
+Global Information Architecture & Sitemap
+Home Gateway
+Interactive applications grid, live installation counters, and primary supplier brand logos.
+Applications (9 Sectors)
+Home Textile & Fast Fashion · T-Shirts & Piece Printing · Carpet, Mats & Rugs · Hi-Tech
+Industrial CAD/CAM · Signage & Display · Wall Covering & Home Décor · Outdoor
+Advertising · Packaging & Labeling · Promotional & Personalization
+Products Catalog
+Filters for printers, finishing cutters, calenders — sorted by brand.
+Consumables Catalog
+Inks (sublimation, latex, UV, solvent) · Papers & PET Films · Replacement Parts (filters,
+printheads, capping stations).
+Fleet Support & Services
+Installation requests, preventative maintenance, ICC profiling, and onsite training
+schedules.
+03
+Visual Rebranding Synthesis
+Applying the Xerox Rebranding Framework, we transition the legacy identity into a warm, high-tech B2B supplier profile.
+VISUAL ELEMENT
+LEGACY IDENTITY
+PROPOSED REBRAND
+Typography
+Sharp serif all-caps — EGYGRAFX SAE
+Bold rounded geometric sans — egygrafx.
+Iconography
+Literal CMYK color grid block
+Overlapping curves forming a 3D infinity loop
+sphere
+Color Palette
+Cyan, Magenta, Yellow offset channels
+Deep Crimson · Digital Coral · Charcoal Slate
+Visual Friction
+High — rigid, traditional corporate
+Low — warm, human-centered innovative tech
+hub
+04
+How the Technology Works
+Digital Filing Cabinet
+Headless CMS
+Firebase Firestore + Clerk Auth admin dashboard. Team updates machine specs or pricing
+with one click — no developers, no maintenance fees.
+Smart Google
+Signposts
+Programmatic SEO
+Every machine, brand, and category auto-generates a dynamic, high-ranking Google page.
+Clients searching 'Kyocera sublimation Egypt' land directly on your product.
+Automated Sales
+Desk
+RFQ Engine
+Runs 24/7: captures exact machine configs, delivers PDF brochures automatically, and routes
+pre-qualified hot lead sheets to your sales team.
+72-Hour Live Deploy
+Domain Integration
+The production build is connected directly to your existing egygrafx.com domain — no waiting,
+no migration. Your new platform goes live within 72 hours of final sign-off.
+
+--- PAGE 4 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.3
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+Role-Based Staff
+Access
+Team Permissions
+Every Egygrafx staff member gets a defined login role — Marketeer, Copywriter, or IT/Admin
+— each with tailored permissions so the right people access only the tools they need.
+Live Analytics &
+Heatmap Dashboard
+Traffic Intelligence
+Real-time visitor traffic, scroll heatmaps, click maps, and session recordings surface exactly
+which application sectors attract the most interest and where the site needs refinement or
+deeper content focus.
+
+--- PAGE 5 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.4
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+05
+Commercial Line Items
+#
+DELIVERABLE
+DESCRIPTION
+PRICE
+(USD)
+ 01
+Website in 72 Hours — Base
+Package
+Custom UI/UX design, responsive mobile-first build, SEO-optimized
+structure, contact form & analytics, unlimited revisions, deployed on Google
+Cloud Run Servers. Stack: React, HTML/CSS, Formspree, Vercel.
+Production build connected directly to egygrafx.com — live within 72 hours of
+sign-off.
+ $300.0
+ 0
+ 02
+Extended Multi-Page
+Architecture
+9-section navigation structure (Home, About, Products, Applications,
+Solutions, Consumables, Service, Contact) with consistent layout system,
+sub-page templates, and internal linking.
+ $150.0
+ 0
+ 03
+Supplier & Brand Directory
+Pages
+Structured pages for 12+ supplier brands (ORIC, HP, BYDi, JHF, Monti
+Antonio, GBOS, DGI, LDP, MagicJet, WitColor, Infiniti, Summa, Neolt) with
+spec layouts and supplier links.
+ $120.0
+ 0
+ 04
+Applications & Solutions
+Category Pages
+9 industry verticals (Home Textile, T-Shirts & DTG, Carpet & Rugs, Signage
+& Display, Wall Covering, Outdoor Advertising, Packaging & Labeling,
+Automotive CAD/CAM, Promotional) with product-to-application mapping.
+ $100.0
+ 0
+ 05
+Consumables Section
+Inks, Paper & Film, and Spare Parts sub-pages with clean product listing
+layouts.
+ $50.00
+ 06
+Secure Cloud Database & CMS
+Integration of Firebase Firestore NoSQL to store all machinery, brands, and
+consumables. Includes a custom-built admin dashboard with Clerk Auth,
+enabling marketing and sales teams to add, edit, and archive specs in
+real-time with zero coding. Role-based access: Marketeer, Copywriter, and
+IT/Admin — each with scoped permissions.
+ $450.0
+ 0
+ 07
+Interactive RFQ Configurator
+Customer inquiry configurator on product pages — B2B buyers select custom
+widths, printhead configurations, and ink setups. Integrates automated PDF
+brochure triggers to the buyer and sends immediate, qualified hot lead sheets
+to the Egygrafx sales desk.
+ $280.0
+ 0
+ 08
+Live Analytics & Heatmap
+Dashboard
+Real-time traffic dashboard, scroll & click heatmaps, and session recordings.
+Surfaces high-performing application sectors and pinpoints areas needing
+content focus or UX improvement.
+ Includ
+ ed
+Subtotal
+ $1,450.00
+Tax / VAT (0.5%)
+ $7.25
+Total
+ $1,457.25
+
+--- PAGE 6 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.5
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+06
+Timeline & Payment Milestones
+Four clear, verified handover milestones. Timeline: 25–30 business days from asset delivery & database schema
+sign-off. Upon final approval, the production build connects to egygrafx.com and goes live within 72 hours.
+PAYMENT
+%
+AMOUNT
+MILESTONE
+DELIVERABLES
+ 25%
+ $750
+Milestone 1 Deposit & Design
+Complete visual rebranding mockups, logo guidelines, and sitemap
+layout sign-off.
+ 30%
+ $900
+Milestone 2 Staging
+Integration
+Frontend catalog and all 9 application hubs deployed to staging
+environment.
+ 35%
+ $1,050
+Milestone 3 Backend & DB
+Lock
+Firestore database, Clerk admin panel, and RFQ configurator fully
+deployed.
+ 10%
+ $300
+Milestone 4 Production
+Handoff
+Go-live domain config, automated SEO registration, and team training
+handoff.
+07
+Ongoing Operational Costs
+Modern serverless architecture keeps ongoing costs exceptionally low. Since Egygrafx already owns egygrafx.com,
+recurring expenses are:
+SERVICE
+COST
+FREE TIER DETAILS
+Google Firebase Database
+ $0 / month
+Free tier: 50,000 reads + 20,000 writes per day
+Clerk Admin Authentication
+ $0 / month
+Free for up to 10,000 active monthly users
+Vercel Hosting
+ $0–$20 / month
+Free tier standard; $20/mo Pro optional for edge security
+Brochure Email (Resend)
+ $0 / month
+Free tier: up to 3,000 emails per month
+
+--- PAGE 7 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.6
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+08
+Platform Architecture & Customer Flows
+The diagrams below map exactly how the platform behaves — from the moment a B2B buyer arrives, through the site's
+navigation structure, down to how your team manages content behind the scenes.
+1 · The B2B Buyer's Journey
+Instead of forcing buyers through thousands of disjointed parts, the platform routes them by industry sector on arrival. A
+buyer like Nour self-identifies, lands on a dedicated hub, sees best-fit machinery with auto-matched consumables,
+configures her setup, and requests a quote — at which point your sales desk receives a pre-qualified hot lead and she
+receives a branded PDF brochure.
+
+--- PAGE 8 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.7
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+2 · Site Navigation Architecture
+The home gateway branches into four pillars — Applications, Products, Consumables, and Support. The Applications
+branch expands into the 9 sector hubs, each leading to individual machine spec pages. Every node becomes its own
+semantic URL (e.g. /applications/[sector], /products/[brand-model]) so each machine and sector ranks independently on
+Google. All paths ultimately funnel into the RFQ portal where the lead is captured.
+
+--- PAGE 9 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.8
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+3 · Headless Backend & Data Model
+Your team edits content through a role-secured dashboard — Marketeer, Copywriter, and IT/Admin, each with scoped
+permissions via Clerk authentication. Changes write to Firestore collections that cross-reference each other: a machine
+knows which sectors and consumables it belongs to. Next.js then pre-renders that data into fast static pages for the
+buyer — no public database is ever exposed, and no per-page developer work is needed.
+
+--- PAGE 10 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.9
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+09
+Technology Stack: Serverless vs. WordPress
+To ensure a transparent technical rationale, below is a direct comparison showing why the proposed modern serverless
+stack is vastly superior to a traditional monolithic WordPress setup for Egygrafx's specific enterprise requirements.
+OPERATIONAL
+ATTRIBUTE
+MONOLITHIC WORDPRESS (LEGACY)
+PROPOSED SERVERLESS STACK
+Speed & Performance
+✗ SLOW — Queries heavy databases on every
+page load, resulting in sluggish catalog and image
+delivery.
+✓ BLAZING FAST — Pages statically
+pre-rendered and served globally from Edge
+CDN locations.
+Security & Hacking Risk
+✗ HIGH RISK — Target of 90% of all web hacking
+attempts. Requires constant plugin updates.
+✓ IRONCLAD — No public-facing database.
+Virtually hacker-proof by architecture.
+Database Flexibility
+✗ RIGID — Designed for simple blogs; struggles
+with complex B2B machinery-to-consumables
+relational mapping.
+✓ FLEXIBLE — Google Firestore NoSQL
+maps rich B2B catalog parameters and
+product-to-application links naturally.
+Monthly Support Costs
+✗ HIGH — Requires a monthly maintenance SLA
+contract for security patches and plugin
+management.
+✓ ZERO — Once deployed, the serverless
+architecture runs indefinitely with zero active
+developer overhead.
+Operational Hosting
+Costs
+✗ $25 – $80 / month for dedicated B2B-grade
+hosting.
+✓ $0 to $20 / month maximum — scales
+automatically inside Google's free quotas.
+STRATEGIC RECOMMENDATION
+For Egygrafx, the Serverless Stack is the optimal business choice. It represents a secure, high-speed corporate
+asset that eliminates monthly developer maintenance fees and provides the exact relational database structure
+required to power Nour's B2B inquiry journey cleanly and at scale.
+10
+Handoff & Authorization
+This proposal represents a complete agreement between Mitry Visuals and Egygrafx. Signing confirms acceptance of
+the scope, pricing, and milestone schedule detailed above.
+CLIENT AUTHORIZATION
+Signature
+Name: Eng. Ashraf
+Title: Executive Director, Egygrafx
+Date: ____________________
+ARCHITECT HANDOFF
+Signature
+Name: Michael Mitry
+Title: Mitry Visuals
+Date: 25 May 2026
+
+--- PAGE 11 ---
+egygrafx
+MV-2026-085  ·  B2B Platform Proposal  ·  p.10
+MITRY VISUALS  ·  MI5A.COM  ·  CAIRO, EGYPT
+Valid Until: 24 June 2026
+ "Transitioning Egygrafx from legacy listings to an application-driven lead generation asset will directly capture
+qualified sales inquiries and empower your team with complete, self-managed inventory control. Excited to partner
+ on this modern rebrand!"
+ — Michael Mitry, Mitry Visuals

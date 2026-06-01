@@ -1,0 +1,73 @@
+--- PAGE 1 ---
+Mitry Visuals
+VISUAL ARTIST  ·  CAIRO
+MV-2026-085
+ISSUED  ·  25 MAY 2026
+VALID UNTIL  ·  24 JUN 2026
+Quotation
+WEBSITE IN 72 HOURS
+PREPARED FOR PREPARED BY
+Eng. Ashraf Michael Mitry
+Egygrafx Mitry Visuals
+michaelmitry13@gmail.com
++20 100 068 0580
+PROJECT
+Egygrafx Corporate Website
+Full multi-page B2B website for Egygrafx — a large-format printing solutions distributor serving Egypt & the
+Middle East. Covers 8 main sections: Home, About, Products (12+ supplier brands), Applications (9 industry
+categories), Solutions, Consumables, Service, and Contact.
+DESCRIPTION QTY AMOUNT
+Website in 72 Hours — base package. Custom UI/UX design, responsive
+mobile-first build, SEO-optimized structure, contact form & analytics,
+unlimited revisions, deployed on Google Clloud Run Servers. Stack: React,
+HTML/CSS, Formspree, Vercel.
+1 $300.00
+Extended multi-page architecture — 9-section
+navigation structure (Home, About, Products,
+Applications, Solutions, Consumables, Service,
+Contact) with consistent layout system, sub-page
+templates, and internal linking.
+1 $150.00
+Supplier & brand directory pages — structured pages
+for 12+ supplier brands (ORIC, HP, BYDi, JHF, Monti
+Antonio, GBOS, DGI, LDP, MagicJet, WitColor, Infiniti,
+Summa, Neolt) with spec layouts and supplier links.
+1 $120.00
+Applications & Solutions category pages — 9 industry
+verticals (Home Textile, T-Shirts & DTG, Carpet &
+Rugs, Signage & Display, Wall Covering, Outdoor
+Advertising, Packaging & Labeling, Automotive CAD/CAM,
+Promotional) with product-to-application mapping.
+1 $100.00
+Consumables section — Inks, Paper & Film, and Spare
+Parts sub-pages with clean product listing layouts.
+1 $50.00
+MITRY VISUALS  ·  MI5A.COM CAIRO  ·  EGYPTPAGE 1 / 2
+--- PAGE 2 ---
+Integration of a secure, enterprise cloud database
+(Firebase Firestore NoSQL) to store all machinery,
+brands, and consumables. Includes a custom-built
+administrative content dashboard with secure user
+authentication (Clerk Auth), enabling the Egygrafx
+marketing and sales teams to add, edit, and archive
+machine specs and stocks in real-time with zero coding
+1 $450.00
+Interactive customer inquiry configurator on product
+pages, allowing B2B buyers to select custom widths,
+printhead configurations, and ink setups. Integrates
+automated PDF brochure triggers to the buyer and sends
+immediate, qualified hot lead sheets to the Egygrafx
+sales desk.
+1 $280.00
+Subtotal $1,450.00
+Tax / VAT (0.5%) $7.25
+Total $1,457.25
+TIMELINE PAYMENT TERMS
+25–30 business days from asset delivery & database
+schema sign-off
+30/30/40 — staged payments across project
+milestones
+"Thank you for the opportunity to propose this web platform. Transitioning Egygrafx from legacy listings to an
+application-driven lead generation asset will directly capture qualified sales inquiries and empower your team
+with complete, self-managed inventory control. Excited to partner on this modern rebrand!"
+MITRY VISUALS  ·  MI5A.COM CAIRO  ·  EGYPTPAGE 2 / 2
